@@ -1,6 +1,7 @@
 <template>
   <section id="about">
-    <aside id="biography">
+    <aside class="biography">
+      <!-- <div class="container"> -->
       <p>
         BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
         baccalaureate (scientist) from Omar ibn el Khattab high school in 2016, License degree (information systems
@@ -17,6 +18,7 @@
         Merouane is now a web developer with extensive experience, large knowledge of languages of web
         development and management skills, like working in collaboration team.
       </p>
+      <!-- </div> -->
     </aside>
     <div class="cub-computer">
       <div data-depth="0.2" class="computer_2">
@@ -47,27 +49,37 @@ export default {
 #about {
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   padding-top: 100px;
   background: -webkit-linear-gradient(
     to bottom,
-    rgb(53, 3, 186),
-    rgb(6, 5, 75)
+    rgb(53, 3, 186) 5%,
+    rgb(6, 5, 75) 75%
   );
-  background: linear-gradient(to bottom, rgb(53, 3, 186), rgb(6, 5, 75));
+  background: linear-gradient(to bottom, rgb(53, 3, 186) 5%, rgb(6, 5, 75) 75%);
   display: flex;
   justify-content: space-around;
 }
 
-#biography {
+.biography {
   padding: 100px;
   width: 60%;
+  z-index: 5;
 }
-#biography p {
+.biography p {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: justify;
 }
+/* .container {
+  transition: 1s;
+  transform: translateY(20px) translateX(20px);
+}
+.container:hover {
+  border: 1px solid black;
+  transform: translateY(0px);
+} */
 .cub-computer {
   width: 100%;
   z-index: 5;
@@ -93,6 +105,7 @@ export default {
   border-image-slice: 1;
 }
 .cub-computer:hover {
+  background-position: -10% 90%;
   transform: rotateY(25deg) rotateZ(15deg) translateZ(20px);
 }
 .computer_2 {

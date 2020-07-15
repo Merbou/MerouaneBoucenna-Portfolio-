@@ -1,7 +1,6 @@
 <template>
   <header>
     <div id="scene">
-      <vue-particles data-depth="0.1" />
       <div id="post-name" data-depth="0.2">Full Stack Web Developer</div>
       <div id="author" data-depth="0.5">
         <h1 class="author-name">Merouane Boucenna</h1>
@@ -39,7 +38,6 @@ header {
   overflow: hidden;
   width: 100%;
   height: 100vh;
-
   background: -webkit-linear-gradient(
     to bottom,
     rgb(108, 229, 250),
@@ -57,6 +55,8 @@ header {
 #post-name {
   z-index: 4;
   padding: 100px;
+  padding-top: 150px;
+
   position: absolute !important;
   top: 0px !important;
   font-size: 70px;
@@ -66,6 +66,7 @@ header {
 #author {
   padding: 100px;
   color: #ffffff;
+  padding-top: 250px;
   z-index: 100;
   display: flex;
   flex-direction: column;
