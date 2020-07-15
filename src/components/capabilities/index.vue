@@ -3,24 +3,132 @@
     <div class="container">
       <div class="total_points">
         <ul>
-          <li>Total score</li>
-          <li>Top score</li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Rank: #1</li>
+          <li>Name: Merouane</li>
+          <li>Level: Mid level</li>
+          <li>
+            <score name="Total score" :isSum="true">
+              <template v-slot:default>
+                <countTo :startVal="0" :endVal="40800" :duration="5000" />
+              </template>
+            </score>
+          </li>
+          <li>
+            <score name="Top score" :isSum="true">
+              <template v-slot:default>
+                <countTo :startVal="0" :endVal="1900" :duration="4000" />
+              </template>
+            </score>
+          </li>
         </ul>
       </div>
-      <div class="capabilitie_points_1"></div>
-      <div class="capabilitie_points_2"></div>
+      <div class="capabilitie_points_1">
+        <ul>
+          <li :key="item.name " v-for="item in columns[0]">
+            <score :name="item.name">
+              <template v-slot:default>
+                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
+              </template>
+            </score>
+          </li>
+        </ul>
+      </div>
+      <div class="capabilitie_points_2">
+        <ul>
+          <li :key="item.name " v-for="item in columns[1]">
+            <score :name="item.name">
+              <template v-slot:default>
+                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
+              </template>
+            </score>
+          </li>
+        </ul>
+      </div>
+      <div class="capabilitie_points_2">
+        <ul>
+          <li :key="item.name " v-for="item in columns[2]">
+            <score :name="item.name">
+              <template v-slot:default>
+                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
+              </template>
+            </score>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import score from "./score";
+import countTo from "vue-count-to";
+
+export default {
+  components: {
+    score,
+    countTo
+  },
+  data() {
+    return {
+      columns: [
+        [
+          { name: "HTML 5", score: 800 },
+          { name: "CSS", score: 1600 },
+          { name: "PHP", score: 1700 },
+          { name: "Laravel", score: 1800 },
+          { name: "Javascript", score: 1700 },
+          { name: "Vuejs", score: 1900 },
+          { name: "sql", score: 1700 },
+          { name: "MYSQL", score: 1700 },
+          { name: "NoSql", score: 1100 },
+          { name: "MONGODB", score: 1100 }
+        ],
+        [
+          { name: "PHPunit", score: 1100 },
+          { name: "Jest", score: 1100 },
+          { name: "Api", score: 1900 },
+          { name: "WebSocekt", score: 1700 },
+          { name: "SEO", score: 1400 },
+          { name: "Vuex", score: 1900 },
+          { name: "Vue-router", score: 1900 },
+          { name: "Vuetify", score: 1900 },
+          { name: "webpack", score: 1500 },
+          { name: "babel", score: 1100 }
+        ],
+        [
+          { name: "SOLID principles", score: 1900 },
+          { name: "Modeling Tools", score: 1500 },
+          { name: "Project management", score: 1100 },
+          { name: "Problem solving", score: 2000 },
+          { name: "Testing", score: 1700 },
+          { name: "Merise", score: 1500 },
+          { name: "UML", score: 1500 }
+        ]
+      ]
+    };
+  },
+  methods: {
+    loadScore(cntr, timer) {
+      let _cntr = 0;
+      for (let index = 0; index < score; index++) {
+        setTimeout(() => _cntr++, timer || 50);
+      }
+    }
+  }
+};
 </script>
 
 <style>
+ul {
+  padding: 50px;
+}
+li {
+  padding-top: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 25px;
+}
 #capabilities {
   overflow: hidden;
   width: 100%;
@@ -63,57 +171,32 @@ export default {};
 
 .total_points {
   height: 100%;
-  width: 70%;
+  width: 80%;
   z-index: 2;
-  border: 3px solid transparent;
-  border-image: linear-gradient(
-    to right,
-    rgb(227, 154, 101) 0%,
-    rgb(233, 96, 142) 30%
-  );
-  border-image-slice: 1;
-
+  border-right: 5px solid rgb(231, 118, 128);
   display: flex;
   flex-direction: column;
 }
+.total_points li {
+  font-size: 24px;
+}
 .capabilitie_points_1 {
   height: 100%;
-  width: 100%;
+  width: 90%;
   z-index: 2;
-  border: 3px solid transparent;
-  border-image: linear-gradient(
-    to right,
-    rgb(227, 154, 101) 0%,
-    rgb(233, 96, 142) 30%
-  );
-  border-image-slice: 1;
-
+  border-right: 5px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
+}
+.capabilitie_points_1 li {
+  font-size: 24px;
 }
 .capabilitie_points_2 {
   width: 100%;
   z-index: 2;
   height: 100%;
-  border: 3px solid transparent;
-  border-image: linear-gradient(
-    to right,
-    rgb(227, 154, 101) 0%,
-    rgb(233, 96, 142) 30%
-  );
-  border-image-slice: 1;
-
+  border-right: 5px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
-}
-ul {
-  padding: 50px;
-}
-li {
-  padding-top: 10px;
-  color: #ffffff;
-  text-decoration: none;
-  list-style-type: none;
-  font-size: 30px;
 }
 </style>
