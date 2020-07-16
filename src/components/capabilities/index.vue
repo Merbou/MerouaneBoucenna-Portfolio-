@@ -43,7 +43,8 @@
 
 <script>
 import pixelBar from "./pixelBar";
-
+let score_counter = new Audio("/sound/score_counter.mp3");
+let end_score_counter = new Audio("/sound/end_score_counter.mp3");
 export default {
   components: {
     pixelBar
@@ -87,6 +88,9 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.playScoreCounter();
+  },
   computed: {
     maxScore() {
       return Math.max(
@@ -99,6 +103,18 @@ export default {
           _acc_c + _cur_c.reduce((_acc, _cur) => _acc + _cur.score, 0),
         0
       );
+    }
+  },
+  methods: {
+    playScoreCounter() {
+      setTimeout(() => {
+        score_counter.play();
+        setTimeout(() => {
+          score_counter.pause();
+          score_counter.currentTime = 0;
+          end_score_counter.play();
+        }, parseInt(8 * 1000));
+      }, 0);
     }
   }
 };
@@ -117,7 +133,6 @@ li {
 }
 #capabilities {
   overflow: hidden;
-
   width: 100%;
   height: 110vh;
   padding-top: 100px;
@@ -144,7 +159,7 @@ li {
   width: 100%;
   display: block;
   box-sizing: border-box;
-  z-index: 5;
+  z-index: 1;
   position: absolute;
   border: 2px solid transparent;
   border-radius: 20px;

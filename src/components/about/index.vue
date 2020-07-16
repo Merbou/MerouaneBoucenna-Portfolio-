@@ -35,14 +35,7 @@
 </template>
 
 <script>
-// import Parallax from "parallax-js";
-
-export default {
-  mounted() {
-    // var cubComputer = document.getElementById("cub-computer");
-    // new Parallax(cubComputer);
-  }
-};
+export default {};
 </script>
 
 <style scoped>

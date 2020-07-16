@@ -31,7 +31,6 @@
 
 <script>
 import gsap from "gsap";
-
 export default {
   name: "pixel-bar",
   props: {
