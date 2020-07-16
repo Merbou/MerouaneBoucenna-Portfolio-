@@ -7,51 +7,33 @@
           <li>Name: Merouane</li>
           <li>Level: Mid level</li>
           <li>
-            <score name="Total score" :isSum="true">
-              <template v-slot:default>
-                <countTo :startVal="0" :endVal="40800" :duration="5000" />
+            <span>Total score:</span>
+
+            <pixel-bar :perc="sumScore" :maxValue="sumScore" :duration="8">
+              <template v-slot:default="{count}">
+                <small>{{count}}</small>
               </template>
-            </score>
+            </pixel-bar>
           </li>
           <li>
-            <score name="Top score" :isSum="true">
-              <template v-slot:default>
-                <countTo :startVal="0" :endVal="1900" :duration="4000" />
+            <span>Top score:</span>
+            <pixel-bar :perc="maxScore" :maxValue="maxScore" :duration="5">
+              <template v-slot:default="{count}">
+                <small>{{count}}</small>
               </template>
-            </score>
+            </pixel-bar>
           </li>
         </ul>
       </div>
-      <div class="capabilitie_points_1">
+      <div :class="`capabilitie_points_${i+1}`" :key="i" v-for="(column,i) in columns">
         <ul>
-          <li :key="item.name " v-for="item in columns[0]">
-            <score :name="item.name">
-              <template v-slot:default>
-                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
+          <li :key="item.name " v-for="item in column">
+            <span>{{item.name}}:</span>
+            <pixel-bar :perc="item.score">
+              <template v-slot:default="{count}">
+                <small>{{count}}/2000</small>
               </template>
-            </score>
-          </li>
-        </ul>
-      </div>
-      <div class="capabilitie_points_2">
-        <ul>
-          <li :key="item.name " v-for="item in columns[1]">
-            <score :name="item.name">
-              <template v-slot:default>
-                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
-              </template>
-            </score>
-          </li>
-        </ul>
-      </div>
-      <div class="capabilitie_points_2">
-        <ul>
-          <li :key="item.name " v-for="item in columns[2]">
-            <score :name="item.name">
-              <template v-slot:default>
-                <countTo :startVal="0" :endVal="item.score" :duration="3000" />
-              </template>
-            </score>
+            </pixel-bar>
           </li>
         </ul>
       </div>
@@ -60,19 +42,17 @@
 </template>
 
 <script>
-import score from "./score";
-import countTo from "vue-count-to";
+import pixelBar from "./pixelBar";
 
 export default {
   components: {
-    score,
-    countTo
+    pixelBar
   },
   data() {
     return {
       columns: [
         [
-          { name: "HTML 5", score: 800 },
+          { name: "HTML 5", score: 1800 },
           { name: "CSS", score: 1600 },
           { name: "PHP", score: 1700 },
           { name: "Laravel", score: 1800 },
@@ -98,21 +78,27 @@ export default {
         [
           { name: "SOLID principles", score: 1900 },
           { name: "Modeling Tools", score: 1500 },
-          { name: "Project management", score: 1100 },
+          { name: "Project management", score: 1400 },
           { name: "Problem solving", score: 2000 },
           { name: "Testing", score: 1700 },
-          { name: "Merise", score: 1500 },
-          { name: "UML", score: 1500 }
+          { name: "Merise", score: 1700 },
+          { name: "UML", score: 1700 }
         ]
       ]
     };
   },
-  methods: {
-    loadScore(cntr, timer) {
-      let _cntr = 0;
-      for (let index = 0; index < score; index++) {
-        setTimeout(() => _cntr++, timer || 50);
-      }
+  computed: {
+    maxScore() {
+      return Math.max(
+        ...this.columns.map(_c => Math.max(..._c.map(e => parseInt(e.score))))
+      );
+    },
+    sumScore() {
+      return this.columns.reduce(
+        (_acc_c, _cur_c) =>
+          _acc_c + _cur_c.reduce((_acc, _cur) => _acc + _cur.score, 0),
+        0
+      );
     }
   }
 };
@@ -120,10 +106,10 @@ export default {
 
 <style>
 ul {
-  padding: 50px;
+  padding: 30px;
 }
 li {
-  padding-top: 10px;
+  padding-top: 7px;
   color: #ffffff;
   text-decoration: none;
   list-style-type: none;
@@ -131,6 +117,7 @@ li {
 }
 #capabilities {
   overflow: hidden;
+
   width: 100%;
   height: 110vh;
   padding-top: 100px;
@@ -159,7 +146,7 @@ li {
   box-sizing: border-box;
   z-index: 5;
   position: absolute;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 20px;
   border-image: linear-gradient(
     to right,
@@ -173,7 +160,7 @@ li {
   height: 100%;
   width: 80%;
   z-index: 2;
-  border-right: 5px solid rgb(231, 118, 128);
+  border-right: 2px solid rgb(231, 118, 128);
   display: flex;
   flex-direction: column;
 }
@@ -184,19 +171,23 @@ li {
   height: 100%;
   width: 90%;
   z-index: 2;
-  border-right: 5px solid rgb(233, 96, 142);
+  border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
 }
 .capabilitie_points_1 li {
   font-size: 24px;
 }
-.capabilitie_points_2 {
+.capabilitie_points_2,
+.capabilitie_points_3 {
   width: 100%;
   z-index: 2;
   height: 100%;
-  border-right: 5px solid rgb(233, 96, 142);
+  border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
+}
+small {
+  font-size: 15px;
 }
 </style>
