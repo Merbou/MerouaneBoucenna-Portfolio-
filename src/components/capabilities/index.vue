@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section>
     <div class="container">
       <div class="total_points">
         <ul>

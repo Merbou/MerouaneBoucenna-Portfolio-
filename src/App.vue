@@ -2,22 +2,22 @@
   <div id="app">
     <vue-particles class="particles" />
     <header-app id="header" />
-    <about id="about" />
+    <about-app id="about" />
     <capabilities id="capabilities" />
   </div>
 </template>
 
 <script>
-// import jump from "jump.js";
+import jump from "jump.js";
 import HeaderApp from "./components/header";
-import About from "./components/about";
+import AboutApp from "./components/about";
 import Capabilities from "./components/capabilities";
 
 export default {
   name: "App",
   components: {
     HeaderApp,
-    About,
+    AboutApp,
     Capabilities
   },
   mounted() {
@@ -26,18 +26,25 @@ export default {
   methods: {
     scroll() {
       if ("IntersectionObserver" in window) {
-        // supported
-
-        const elements = ["header", "about","capabilities"];
+        const elements = ["header", "about", "capabilities"];
+        const targets = new Map([[elements[0],0.0],
+         [elements[1],0.0],
+         [elements[2],0.0]]);
         var options = {
           root: null,
           rootMargin: "0px",
-          threshold: 1.0
+          threshold: [1.0, 0.75, 0.5, 0.25]
         };
         let observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            console.log(entry.target);
+            if(targets.get(entry.target.id)>entry.intersectionRatio){
+              jump(`#${elements[elements.indexOf(entry.target.id)+1]}`)
+            }
+            targets.set(entry.target.id,entry.intersectionRatio)
           });
+          targets.forEach((value,target) => {
+            console.log(target,value)
+          })
         }, options);
 
         elements.forEach(element => {
@@ -58,8 +65,15 @@ export default {
   height: 270vh;
   width: 100%;
 }
-#app {
-  overflow-x: hidden;
-  height: 300vh;
+#header {
+  height: 100vh;
+}
+#about {
+  height: 100vh;
+  padding-top: 100px;
+}
+#capabilities {
+  padding-top: 100px;
+  height: 110vh;
 }
 </style>

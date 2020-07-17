@@ -33,7 +33,6 @@ export default {
 header {
   overflow: hidden;
   width: 100%;
-  height: 100vh;
   background: -webkit-linear-gradient(
     to bottom,
     rgb(108, 229, 250),

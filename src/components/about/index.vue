@@ -39,8 +39,6 @@ export default {};
 <style scoped>
 section {
   width: 100%;
-  /* padding-top: 100px;
-  padding-bottom: 100px; */
   background: -webkit-linear-gradient(
     to bottom,
     rgb(53, 3, 186) 5%,
