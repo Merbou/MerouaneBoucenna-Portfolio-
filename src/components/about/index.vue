@@ -1,7 +1,17 @@
 <template>
-  <section id="about">
+  <section>
+    <div class="cub-computer">
+      <div data-depth="0.2" class="computer_2">
+        <img src="/img/computer_2.png" height="600" alt="computer_2" />
+        <span class="computer-shadow"></span>
+      </div>
+
+      <div data-depth="0.5" class="cub">
+        <img src="/img/cub.png" height="300" alt="cub" />
+        <span class="cub-shadow"></span>
+      </div>
+    </div>
     <aside class="biography">
-      <!-- <div class="container"> -->
       <p>
         BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
         baccalaureate (scientist) from Omar ibn el Khattab high school in 2016, License degree (information systems
@@ -18,19 +28,7 @@
         Merouane is now a web developer with extensive experience, large knowledge of languages of web
         development and management skills, like working in collaboration team.
       </p>
-      <!-- </div> -->
     </aside>
-    <div class="cub-computer">
-      <div data-depth="0.2" class="computer_2">
-        <img src="/img/computer_2.png" height="600" alt="computer_2" />
-        <span class="computer-shadow"></span>
-      </div>
-
-      <div data-depth="0.5" class="cub">
-        <img src="/img/cub.png" height="300" alt="cub" />
-        <span class="cub-shadow"></span>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -39,11 +37,12 @@ export default {};
 </script>
 
 <style scoped>
-#about {
+section {
   overflow: hidden;
   width: 100%;
-  height: 110vh;
+  /* height: 100vh;  */
   padding-top: 100px;
+  padding-bottom: 100px;
   background: -webkit-linear-gradient(
     to bottom,
     rgb(53, 3, 186) 5%,
@@ -65,20 +64,18 @@ export default {};
   -webkit-text-fill-color: transparent;
   text-align: justify;
 }
-/* .container {
-  transition: 1s;
-  transform: translateY(20px) translateX(20px);
-}
-.container:hover {
-  border: 1px solid black;
-  transform: translateY(0px);
-} */
 .cub-computer {
   width: 100%;
   z-index: 5;
   transition: 1s;
   position: relative;
   max-height: 500px;
+}
+.cub-computer .computer_2 .img {
+  max-height: 600px;
+}
+.cub-computer .cub .img {
+  max-height: 300px;
 }
 .cub-computer::before {
   content: "";
@@ -97,7 +94,7 @@ export default {};
   );
   border-image-slice: 1;
 }
-.cub-computer:hover {
+section:hover .cub-computer {
   background-position: -10% 90%;
   transform: rotateY(25deg) rotateZ(15deg) translateZ(20px);
 }
@@ -107,7 +104,7 @@ export default {};
   margin: 50px;
   transition: 1s;
 }
-.cub-computer:hover .computer_2 {
+section:hover .cub-computer .computer_2 {
   transform: translateX(-10px) translateY(-25px) rotate(-20deg) scale(1.1);
 }
 .cub {
@@ -115,7 +112,7 @@ export default {};
   z-index: 10;
   transition: 1s;
 }
-.cub-computer:hover .cub {
+section:hover .cub-computer .cub {
   transform: translateX(-100px) translateY(100px) rotate(-15deg) scale(1.1);
 }
 .computer-shadow {
@@ -132,7 +129,7 @@ export default {};
   background: rgba(0, 0, 0, 0.2);
   transition: 1s;
 }
-.cub-computer:hover .computer-shadow {
+section:hover .cub-computer .computer-shadow {
   transform: translateY(30px) translateZ(500px) rotate(52deg)
     skew(-9deg, -22deg) scale(0.8);
 }
@@ -147,7 +144,7 @@ export default {};
   background: rgba(0, 0, 0, 0.2);
   transition: 1s;
 }
-.cub-computer:hover .cub-shadow {
+section:hover .cub-computer .cub-shadow {
   transform: translateY(30px) translateZ(500px) scale(0.8);
 }
 </style>

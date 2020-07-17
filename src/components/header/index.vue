@@ -10,10 +10,6 @@
           <icons class="svg" name="twitter" fill="#fff" />
         </div>
       </div>
-      <!-- <img src="/computer.png" alt="computer" height="500" class="computer" />
-      <img src="/ball_1.png" alt="ball_1" height="200" class="ball_1" />
-      <img src="/ball_1.png" alt="ball_2" height="200" class="ball_2" />
-      <img src="/ball_1.png" alt="ball_3" height="200" class="ball_3" />-->
     </div>
   </header>
 </template>
@@ -55,7 +51,7 @@ header {
 #post-name {
   z-index: 4;
   padding: 100px;
-  padding-top: 150px;
+  padding-top: 200px;
 
   position: absolute !important;
   top: 0px !important;
@@ -87,21 +83,4 @@ header {
   width: 100px;
   margin: 10px;
 }
-
-/* .computer {
-  position: absolute;
-  top: 0px;
-}
-.ball_1 {
-  position: absolute;
-  top: 0px;
-}
-.ball_2 {
-  position: absolute;
-  top: 0px;
-}
-.ball_3 {
-  position: absolute;
-  top: 0px;
-} */
 </style>
