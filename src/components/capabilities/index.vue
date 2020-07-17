@@ -1,5 +1,5 @@
 <template>
-  <section id="capabilities">
+  <section >
     <div class="container">
       <div class="total_points">
         <ul>
@@ -131,11 +131,9 @@ li {
   list-style-type: none;
   font-size: 25px;
 }
-#capabilities {
+section {
   overflow: hidden;
   width: 100%;
-  height: 110vh;
-  padding-top: 100px;
   background: -webkit-linear-gradient(
     to bottom,
     rgb(6, 5, 75),

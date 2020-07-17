@@ -1,16 +1,5 @@
 <template>
   <section>
-    <div class="cub-computer">
-      <div data-depth="0.2" class="computer_2">
-        <img src="/img/computer_2.png" height="600" alt="computer_2" />
-        <span class="computer-shadow"></span>
-      </div>
-
-      <div data-depth="0.5" class="cub">
-        <img src="/img/cub.png" height="300" alt="cub" />
-        <span class="cub-shadow"></span>
-      </div>
-    </div>
     <aside class="biography">
       <p>
         BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
@@ -29,6 +18,17 @@
         development and management skills, like working in collaboration team.
       </p>
     </aside>
+    <div class="cub-computer">
+      <div class="computer_2">
+        <img src="/img/computer_2.png" alt="computer_2" />
+        <span class="computer-shadow"></span>
+      </div>
+
+      <div class="cub">
+        <img src="/img/cub.png" alt="cub" />
+        <span class="cub-shadow"></span>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -38,11 +38,9 @@ export default {};
 
 <style scoped>
 section {
-  overflow: hidden;
   width: 100%;
-  /* height: 100vh;  */
-  padding-top: 100px;
-  padding-bottom: 100px;
+  /* padding-top: 100px;
+  padding-bottom: 100px; */
   background: -webkit-linear-gradient(
     to bottom,
     rgb(53, 3, 186) 5%,
@@ -51,11 +49,11 @@ section {
   background: linear-gradient(to bottom, rgb(53, 3, 186) 5%, rgb(6, 5, 75) 75%);
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .biography {
-  padding: 100px;
-  width: 60%;
+  max-width: 500px;
   z-index: 5;
 }
 .biography p {
@@ -64,29 +62,29 @@ section {
   -webkit-text-fill-color: transparent;
   text-align: justify;
 }
+
 .cub-computer {
-  width: 100%;
+  max-width: 700px;
   z-index: 5;
   transition: 1s;
   position: relative;
   max-height: 500px;
-}
-.cub-computer .computer_2 .img {
-  max-height: 600px;
-}
-.cub-computer .cub .img {
-  max-height: 300px;
 }
 .cub-computer::before {
   content: "";
   display: block;
   box-sizing: border-box;
   position: absolute;
-  height: 500px;
+  height: 90%;
   width: 90%;
   z-index: -1;
   border: 5px solid transparent;
   border-radius: 20px;
+  -o-border-image: linear-gradient(
+    to right,
+    rgb(227, 154, 101) 0%,
+    rgb(233, 96, 142) 30%
+  );
   border-image: linear-gradient(
     to right,
     rgb(227, 154, 101) 0%,
@@ -94,30 +92,30 @@ section {
   );
   border-image-slice: 1;
 }
-section:hover .cub-computer {
-  background-position: -10% 90%;
-  transform: rotateY(25deg) rotateZ(15deg) translateZ(20px);
+
+.computer_2 img {
+  max-width: 600px;
+  height: auto;
 }
 .computer_2 {
-  position: absolute;
+  position: relative;
   z-index: 50;
-  margin: 50px;
   transition: 1s;
 }
-section:hover .cub-computer .computer_2 {
-  transform: translateX(-10px) translateY(-25px) rotate(-20deg) scale(1.1);
+.cub img {
+  height: auto;
+  max-width: 130px;
 }
 .cub {
   position: absolute;
-  z-index: 10;
+  top: -20px;
+  left: 0px;
+  z-index: 60;
   transition: 1s;
-}
-section:hover .cub-computer .cub {
-  transform: translateX(-100px) translateY(100px) rotate(-15deg) scale(1.1);
 }
 .computer-shadow {
   position: absolute;
-  bottom: 55px;
+  bottom: 0px;
   height: 228px;
   width: 300px;
   right: 125px;
@@ -129,10 +127,7 @@ section:hover .cub-computer .cub {
   background: rgba(0, 0, 0, 0.2);
   transition: 1s;
 }
-section:hover .cub-computer .computer-shadow {
-  transform: translateY(30px) translateZ(500px) rotate(52deg)
-    skew(-9deg, -22deg) scale(0.8);
-}
+
 .cub-shadow {
   position: absolute;
   bottom: 0px;
@@ -143,6 +138,21 @@ section:hover .cub-computer .computer-shadow {
   border-radius: 100%;
   background: rgba(0, 0, 0, 0.2);
   transition: 1s;
+}
+
+section:hover .cub-computer {
+  background-position: -10% 90%;
+  transform: rotateY(25deg) rotateZ(15deg) translateZ(20px);
+}
+section:hover .cub-computer .computer_2 {
+  transform: translateX(-10px) translateY(-25px) rotate(-20deg) scale(1.1);
+}
+section:hover .cub-computer .cub {
+  transform: translateX(-100px) translateY(100px) rotate(-15deg) scale(1.1);
+}
+section:hover .cub-computer .computer-shadow {
+  transform: translateY(30px) translateZ(500px) rotate(52deg)
+    skew(-9deg, -22deg) scale(0.8);
 }
 section:hover .cub-computer .cub-shadow {
   transform: translateY(30px) translateZ(500px) scale(0.8);

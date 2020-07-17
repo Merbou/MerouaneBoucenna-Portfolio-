@@ -3,7 +3,7 @@
     <vue-particles class="particles" />
     <header-app id="header" />
     <about id="about" />
-    <capabilities />
+    <capabilities id="capabilities" />
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
       if ("IntersectionObserver" in window) {
         // supported
 
-        const elements = ["header", "about"];
+        const elements = ["header", "about","capabilities"];
         var options = {
           root: null,
           rootMargin: "0px",
@@ -55,7 +55,11 @@ export default {
 .particles {
   position: absolute;
   z-index: 1;
-  height: 300vh;
+  height: 270vh;
   width: 100%;
+}
+#app {
+  overflow-x: hidden;
+  height: 300vh;
 }
 </style>

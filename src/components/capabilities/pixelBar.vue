@@ -105,7 +105,7 @@ export default {
 }
 .row {
   width: 5px;
-  height: 35%;
+  height: 33%;
   background: #92c81a;
   float: right;
 }
