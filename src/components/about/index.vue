@@ -33,7 +33,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:{
+    about:{
+      type:Boolean
+    }
+  }
+};
 </script>
 
 <style scoped>

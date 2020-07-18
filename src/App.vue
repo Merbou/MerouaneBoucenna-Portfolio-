@@ -1,24 +1,35 @@
 <template>
   <div id="app">
     <vue-particles class="particles" />
-    <header-app id="header" />
-    <about-app id="about" />
-    <capabilities id="capabilities" />
+    <header-app :header="header" id="header" />
+    <about-app :about="header" id="about" />
+    <capabilities :capabilities="capabilities" id="capabilities" />
+    <!-- <works-app :works="works" id="works" /> -->
   </div>
 </template>
 
 <script>
-import jump from "jump.js";
+// import jump from "jump.js";
 import HeaderApp from "./components/header";
 import AboutApp from "./components/about";
 import Capabilities from "./components/capabilities";
+// import WorksApp from "./components/works";
 
 export default {
   name: "App",
   components: {
     HeaderApp,
     AboutApp,
-    Capabilities
+    Capabilities,
+    // WorksApp 
+  },
+  data() {
+    return {
+      header: false,
+      about: false,
+      capabilities: false,
+      works: false,
+    };
   },
   mounted() {
     this.scroll();
@@ -26,10 +37,8 @@ export default {
   methods: {
     scroll() {
       if ("IntersectionObserver" in window) {
-        const elements = ["header", "about", "capabilities"];
-        const targets = new Map([[elements[0],0.0],
-         [elements[1],0.0],
-         [elements[2],0.0]]);
+        const elements = ["header", "about", "capabilities","works"];
+        // const targets = new Map(elements.map(e => [e, 0]));
         var options = {
           root: null,
           rootMargin: "0px",
@@ -37,21 +46,13 @@ export default {
         };
         let observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            if(targets.get(entry.target.id)>entry.intersectionRatio){
-              jump(`#${elements[elements.indexOf(entry.target.id)+1]}`)
-            }
-            targets.set(entry.target.id,entry.intersectionRatio)
+            if (entry.intersectionRatio > 0.7) this[entry.target.id] = true;
           });
-          targets.forEach((value,target) => {
-            console.log(target,value)
-          })
         }, options);
 
         elements.forEach(element => {
           observer.observe(document.querySelector(`#${element}`));
         });
-
-        // console.log(observer);
       }
     }
   }
@@ -62,7 +63,7 @@ export default {
 .particles {
   position: absolute;
   z-index: 1;
-  height: 270vh;
+  height: 420vh;
   width: 100%;
 }
 #header {
@@ -73,6 +74,10 @@ export default {
   padding-top: 100px;
 }
 #capabilities {
+  padding-top: 100px;
+  height: 110vh;
+}
+#works {
   padding-top: 100px;
   height: 110vh;
 }

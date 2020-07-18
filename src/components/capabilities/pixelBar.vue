@@ -45,15 +45,15 @@ export default {
     duration: {
       type: Number,
       default: 4
+    },
+    play: {
+      type: Boolean
     }
   },
   data() {
     return {
       count: 0
     };
-  },
-  mounted() {
-    this.countTo();
   },
   computed: {
     animatedCount: function() {
@@ -63,6 +63,11 @@ export default {
   methods: {
     countTo() {
       gsap.to(this.$data, { duration: this.duration, count: this.perc });
+    }
+  },
+  watch: {
+    play() {
+      this.countTo();
     }
   }
 };

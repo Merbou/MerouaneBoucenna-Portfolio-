@@ -22,6 +22,11 @@ export default {
   components: {
     icons
   },
+  props: {
+    header: {
+      type: Boolean
+    }
+  },
   mounted() {
     var scene = document.getElementById("scene");
     new Parallax(scene);

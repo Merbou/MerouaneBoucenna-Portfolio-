@@ -3,13 +3,19 @@
     <div class="container">
       <div class="total_points">
         <ul>
-          <li>Rank: #1</li>
-          <li>Name: Merouane</li>
-          <li>Level: Mid level</li>
+          <li>
+            <span>Rank: #1</span>
+          </li>
+          <li>
+            <span>Name: Merouane</span>
+          </li>
+          <li>
+            <span>Level: Mid level</span>
+          </li>
           <li>
             <span>Total score:</span>
 
-            <pixel-bar :perc="sumScore" :maxValue="sumScore" :duration="8">
+            <pixel-bar :play="capabilities" :perc="sumScore" :maxValue="sumScore" :duration="8">
               <template v-slot:default="{count}">
                 <small>{{count}}</small>
               </template>
@@ -17,7 +23,7 @@
           </li>
           <li>
             <span>Top score:</span>
-            <pixel-bar :perc="maxScore" :maxValue="maxScore" :duration="5">
+            <pixel-bar :play="capabilities" :perc="maxScore" :maxValue="maxScore" :duration="5">
               <template v-slot:default="{count}">
                 <small>{{count}}</small>
               </template>
@@ -29,7 +35,7 @@
         <ul>
           <li :key="item.name " v-for="item in column">
             <span>{{item.name}}:</span>
-            <pixel-bar :perc="item.score">
+            <pixel-bar :play="capabilities" :perc="item.score">
               <template v-slot:default="{count}">
                 <small>{{count}}/2000</small>
               </template>
@@ -48,6 +54,11 @@ let end_score_counter = new Audio("/sound/end_score_counter.mp3");
 export default {
   components: {
     pixelBar
+  },
+  props: {
+    capabilities: {
+      type: Boolean
+    }
   },
   data() {
     return {
@@ -88,9 +99,6 @@ export default {
       ]
     };
   },
-  mounted() {
-    this.playScoreCounter();
-  },
   computed: {
     maxScore() {
       return Math.max(
@@ -106,15 +114,20 @@ export default {
     }
   },
   methods: {
-    playScoreCounter() {
+    playScoreCounter(timer) {
       setTimeout(() => {
         score_counter.play();
         setTimeout(() => {
           score_counter.pause();
           score_counter.currentTime = 0;
           end_score_counter.play();
-        }, parseInt(8 * 1000));
+        }, parseInt(timer));
       }, 0);
+    }
+  },
+  watch: {
+    capabilities() {
+      this.playScoreCounter(8000);
     }
   }
 };
@@ -130,6 +143,10 @@ li {
   text-decoration: none;
   list-style-type: none;
   font-size: 25px;
+  transition: 1s;
+}
+li span {
+  transition: 1s;
 }
 section {
   overflow: hidden;
@@ -139,6 +156,7 @@ section {
     rgb(6, 5, 75),
     rgb(53, 3, 186)
   );
+  z-index: 55;
   background: linear-gradient(to bottom, rgb(6, 5, 75), rgb(53, 3, 186));
   display: flex;
   justify-content: space-around;
@@ -147,9 +165,20 @@ section {
   margin: 50px;
   position: relative;
   max-height: 1000px;
-  width: 100%;
+  width: 88%;
+  z-index: 55;
   display: flex;
   justify-content: space-between;
+  transition: 1s;
+}
+#capabilities:hover .container {
+  transform: perspective(1000px) rotateX(11deg) rotateY(0deg) scale3d(1, 1, 1);
+}
+#capabilities:hover li {
+  transform: scaleY(1.2) translateY(-20px);
+}
+#capabilities:hover li span {
+  box-shadow: 2px 16px 4px rgba(0, 0, 0, 0.3);
 }
 .container::before {
   content: "";
