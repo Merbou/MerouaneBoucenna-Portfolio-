@@ -143,10 +143,10 @@ li {
   text-decoration: none;
   list-style-type: none;
   font-size: 25px;
-  transition: 1s;
+  transition: 2s;
 }
 li span {
-  transition: 1s;
+  transition: 2s;
 }
 section {
   overflow: hidden;
@@ -169,17 +169,19 @@ section {
   z-index: 55;
   display: flex;
   justify-content: space-between;
+  transform: perspective(1000px);
   transition: 1s;
 }
 #capabilities:hover .container {
   transform: perspective(1000px) rotateX(11deg) rotateY(0deg) scale3d(1, 1, 1);
 }
-#capabilities:hover li {
-  transform: scaleY(1.2) translateY(-20px);
-}
+  #capabilities:hover li {
+  transform: scaleY(1.2) translateY(-25px);
+} 
+
 #capabilities:hover li span {
   box-shadow: 2px 16px 4px rgba(0, 0, 0, 0.3);
-}
+} 
 .container::before {
   content: "";
   height: 100%;

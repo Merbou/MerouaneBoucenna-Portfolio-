@@ -4,7 +4,7 @@
     <header-app :header="header" id="header" />
     <about-app :about="header" id="about" />
     <capabilities :capabilities="capabilities" id="capabilities" />
-    <!-- <works-app :works="works" id="works" /> -->
+    <works-app :works="works" id="works" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@
 import HeaderApp from "./components/header";
 import AboutApp from "./components/about";
 import Capabilities from "./components/capabilities";
-// import WorksApp from "./components/works";
+import WorksApp from "./components/works";
 
 export default {
   name: "App",
@@ -21,7 +21,7 @@ export default {
     HeaderApp,
     AboutApp,
     Capabilities,
-    // WorksApp 
+    WorksApp
   },
   data() {
     return {
