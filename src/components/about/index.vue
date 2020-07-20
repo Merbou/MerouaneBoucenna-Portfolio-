@@ -73,6 +73,7 @@ section {
   transition: 1s;
   position: relative;
   max-height: 500px;
+  transform: perspective(400px);
 }
 .cub-computer::before {
   content: "";

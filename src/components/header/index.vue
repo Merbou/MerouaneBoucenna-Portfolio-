@@ -5,9 +5,9 @@
       <div id="author" data-depth="0.5">
         <h1 class="author-name">Merouane Boucenna</h1>
         <div class="social-media">
-          <icons class="svg" name="github" fill="#fff" />
-          <icons class="svg" name="facebook" fill="#fff" />
-          <icons class="svg" name="twitter" fill="#fff" />
+          <icon class="svg" name="github" fill="#fff" />
+          <icon class="svg" name="facebook" fill="#fff" />
+          <icon class="svg" name="twitter" fill="#fff" />
         </div>
       </div>
     </div>
@@ -16,11 +16,11 @@
 
 <script>
 import Parallax from "parallax-js";
-import icons from "./icons";
+import icon from "../icons";
 export default {
   name: "ScreenApp",
   components: {
-    icons
+    icon
   },
   props: {
     header: {
