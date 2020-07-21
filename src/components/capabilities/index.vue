@@ -166,13 +166,8 @@ li span {
 section {
   overflow: hidden;
   width: 100%;
-  background: -webkit-linear-gradient(
-    to bottom,
-    rgb(6, 5, 75),
-    rgb(53, 3, 186)
-  );
+  background: rgb(6, 5, 75);
   z-index: 55;
-  background: linear-gradient(to bottom, rgb(6, 5, 75), rgb(53, 3, 186));
   display: flex;
   justify-content: space-around;
 }

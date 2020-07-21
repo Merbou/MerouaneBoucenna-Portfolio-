@@ -99,11 +99,6 @@ export default {
     animatedCountTimeWork: function() {
       return this.countTime.toFixed(0);
     }
-    // totalLitreCoffee() {
-    //   return this.projets
-    //     .map(e => e.litreCoffee)
-    //     .reduce((acc, curr) => acc + curr, 0);
-    // },
   },
   methods: {
     countTo(prams) {
@@ -134,12 +129,7 @@ export default {
 section {
   overflow: hidden;
   width: 100%;
-  background: -webkit-linear-gradient(
-    to top,
-    rgb(108, 229, 250),
-    rgb(53, 3, 186)
-  );
-  background: linear-gradient(to top, rgb(108, 229, 250), rgb(53, 3, 186));
+  background: rgb(6, 5, 75);
   display: flex;
   flex-direction: column;
 }
@@ -153,11 +143,7 @@ section {
   width: 350px;
   z-index: 55;
   height: 400px;
-  background: linear-gradient(
-    to bottom,
-    rgb(108 229 250) 0%,
-    rgb(58 24 192) 100%
-  );
+  background: linear-gradient( to bottom, rgb(58 24 192) 0%, rgb(227 154 101) 100% );
   transform-style: preserve-3d;
   display: flex;
   justify-content: space-around;

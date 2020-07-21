@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="footer-footer">
-      <span>made with love</span>
+      <span>{{ new Date().getFullYear() }} — Copyright © {{name}}. All rights reserved</span>
     </div>
   </section>
 </template>
@@ -33,23 +33,29 @@ export default {
   components: {
     icon
   },
-  name: "footerApp"
+  name: "footerApp",
+  data() {
+    return {
+      name: "MB Protfolio"
+    };
+  }
 };
 </script>
 
 <style scoped>
 section {
-  height: 15vh;
   width: 100%;
-  background: #ffffff;
   display: flex;
-
   flex-direction: column;
 }
 .content-footer {
+  z-index: 55;
   display: flex;
+  mix-blend-mode: screen;
   justify-content: space-around;
   width: 100%;
+  mix-blend-mode: screen;
+  background: #fff;
   height: 80%;
 }
 

@@ -83,7 +83,11 @@ export default {
   height: 110vh;
 }
 #works {
-  padding-top: 100px;
-  height: 110vh;
+  padding-top: 60px;
+  height: 95vh;
+}
+#footer {
+  height: 15vh;
+  
 }
 </style>
