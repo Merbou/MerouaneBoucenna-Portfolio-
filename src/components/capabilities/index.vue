@@ -46,6 +46,7 @@ export default {
   },
   data() {
     return {
+      init:false,
       columns: [
         [
           { title: "HTML 5", score: 1800 },
@@ -131,6 +132,7 @@ export default {
       return this.sumScoreValue;
     },
     playScoreCounter(timer) {
+      this.init=true
       score_counter.play();
       setTimeout(() => {
         score_counter.pause();
@@ -142,7 +144,7 @@ export default {
 
   watch: {
     capabilities() {
-      if (!this.sumScoreValue) this.playScoreCounter(6000);
+      if (!this.init) this.playScoreCounter(6000);
     }
   }
 };
