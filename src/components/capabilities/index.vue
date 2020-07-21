@@ -142,7 +142,7 @@ export default {
 
   watch: {
     capabilities() {
-      this.playScoreCounter(6000);
+      if (!this.sumScoreValue) this.playScoreCounter(6000);
     }
   }
 };

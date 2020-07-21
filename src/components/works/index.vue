@@ -146,12 +146,12 @@ section {
 .container-works {
   width: 100%;
   display: flex;
-  z-index: 55;
   justify-content: space-around;
 }
 .card {
   position: relative;
   width: 350px;
+  z-index: 55;
   height: 400px;
   background: linear-gradient(
     to bottom,
@@ -222,13 +222,13 @@ section {
   margin-top: 14px;
 }
 .svg {
+  z-index: 55;
   width: 30px;
   height: 30px;
   margin: 7px;
 }
 
 .footer-scetion {
-  z-index: 55;
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -240,6 +240,7 @@ section {
   font-size: 55px;
 }
 .svg-footer-section {
+  z-index: 55;
   width: 100px;
   height: 100px;
   margin: 10px;
