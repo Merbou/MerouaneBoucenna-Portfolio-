@@ -18,15 +18,16 @@
         development and management skills, like working in collaboration team.
       </p>
     </aside>
-    <div class="cub-computer">
-      <div class="computer_2">
+    
+    <div class="cub-computer" :class="{'cub-computer-scrolled':about}">
+      <div class="computer_2" :class="{'computer_2-scrolled':about}">
         <img src="/img/computer_2.png" alt="computer_2" />
-        <span class="computer-shadow"></span>
+        <span class="computer-shadow" :class="{'computer-shadow-scrolled':about}" ></span>
       </div>
 
-      <div class="cub">
+      <div class="cub" :class="{'cub-scrolled':about}">
         <img src="/img/cub.png" alt="cub" />
-        <span class="cub-shadow"></span>
+        <span class="cub-shadow" :class="{'cub-shadow-scrolled':about}"></span>
       </div>
     </div>
   </section>
@@ -145,21 +146,21 @@ section {
   transition: 1s;
 }
 
-section:hover .cub-computer {
+.cub-computer-scrolled {
   background-position: -10% 90%;
   transform: rotateY(25deg) rotateZ(15deg) translateZ(20px);
 }
-section:hover .cub-computer .computer_2 {
+.computer_2-scrolled {
   transform: translateX(-10px) translateY(-25px) rotate(-20deg) scale(1.1);
 }
-section:hover .cub-computer .cub {
+.cub-scrolled {
   transform: translateX(-100px) translateY(100px) rotate(-15deg) scale(1.1);
 }
-section:hover .cub-computer .computer-shadow {
+.computer-shadow-scrolled {
   transform: translateY(30px) translateZ(500px) rotate(52deg)
     skew(-9deg, -22deg) scale(0.8);
 }
-section:hover .cub-computer .cub-shadow {
+.cub-shadow-scrolled {
   transform: translateY(30px) translateZ(500px) scale(0.8);
 }
 </style>

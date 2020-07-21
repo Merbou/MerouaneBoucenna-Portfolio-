@@ -2,9 +2,10 @@
   <div id="app">
     <vue-particles class="particles" />
     <header-app :header="header" id="header" />
-    <about-app :about="header" id="about" />
+    <about-app :about="about" id="about" />
     <capabilities :capabilities="capabilities" id="capabilities" />
     <works-app :works="works" id="works" />
+    <footer-app :footer="footer" id="footer" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import HeaderApp from "./components/header";
 import AboutApp from "./components/about";
 import Capabilities from "./components/capabilities";
 import WorksApp from "./components/works";
+import FooterApp from "./components/footerApp";
 
 export default {
   name: "App",
@@ -21,7 +23,8 @@ export default {
     HeaderApp,
     AboutApp,
     Capabilities,
-    WorksApp
+    WorksApp,
+    FooterApp
   },
   data() {
     return {
@@ -29,6 +32,7 @@ export default {
       about: false,
       capabilities: false,
       works: false,
+      footer: false
     };
   },
   mounted() {
@@ -37,7 +41,7 @@ export default {
   methods: {
     scroll() {
       if ("IntersectionObserver" in window) {
-        const elements = ["header", "about", "capabilities","works"];
+        const elements = ["header", "about", "capabilities", "works", "footer"];
         // const targets = new Map(elements.map(e => [e, 0]));
         var options = {
           root: null,
@@ -46,7 +50,8 @@ export default {
         };
         let observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
-            if (entry.intersectionRatio > 0.7) this[entry.target.id] = true;
+            if (entry.intersectionRatio > 0.5) this[entry.target.id] = true;
+            if (entry.intersectionRatio < 0.3) this[entry.target.id] = false;
           });
         }, options);
 

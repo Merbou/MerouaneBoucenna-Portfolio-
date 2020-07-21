@@ -1,45 +1,29 @@
 <template>
   <section>
-    <div class="container">
-      <div class="total_points">
+    <div class="container" :class="{'container-scrolled':capabilities}">
+      <div :class="`column_points_${i+1}`" :key="i" v-for="(column,i) in full_columns()">
         <ul>
-          <li>
-            <span>Rank: #1</span>
-          </li>
-          <li>
-            <span>Name: Merouane</span>
-          </li>
-          <li>
-            <span>Level: Mid level</span>
-          </li>
-          <li>
-            <span>Total score:</span>
+          <li :key="item.title" v-for="item in column" :class="{'li-scrolled':capabilities}">
+            <span :class="{'span-scrolled':capabilities}">{{item.title}}: {{item.name}}</span>
 
-            <pixel-bar :play="capabilities" :perc="sumScore" :maxValue="sumScore" :duration="8">
-              <template v-slot:default="{count}">
-                <small>{{count}}</small>
-              </template>
-            </pixel-bar>
-          </li>
-          <li>
-            <span>Top score:</span>
-            <pixel-bar :play="capabilities" :perc="maxScore" :maxValue="maxScore" :duration="5">
-              <template v-slot:default="{count}">
-                <small>{{count}}</small>
-              </template>
-            </pixel-bar>
-          </li>
-        </ul>
-      </div>
-      <div :class="`capabilitie_points_${i+1}`" :key="i" v-for="(column,i) in columns">
-        <ul>
-          <li :key="item.name " v-for="item in column">
-            <span>{{item.name}}:</span>
-            <pixel-bar :play="capabilities" :perc="item.score">
-              <template v-slot:default="{count}">
-                <small>{{count}}/2000</small>
-              </template>
-            </pixel-bar>
+            <template v-if="item.value||item.score">
+              <pixel-bar v-if="item.score" :play="capabilities" :value="item.score">
+                <template v-slot:default="{count}">
+                  <small>{{count}}/2000</small>
+                </template>
+              </pixel-bar>
+              <pixel-bar
+                v-if="item.value"
+                :play="capabilities"
+                :value="item.value()"
+                :maxValue="item.value()"
+                :duration="item.duration"
+              >
+                <template v-slot:default="{count}">
+                  <small>{{count}}</small>
+                </template>
+              </pixel-bar>
+            </template>
           </li>
         </ul>
       </div>
@@ -64,70 +48,101 @@ export default {
     return {
       columns: [
         [
-          { name: "HTML 5", score: 1800 },
-          { name: "CSS", score: 1600 },
-          { name: "PHP", score: 1700 },
-          { name: "Laravel", score: 1800 },
-          { name: "Javascript", score: 1700 },
-          { name: "Vuejs", score: 1900 },
-          { name: "sql", score: 1700 },
-          { name: "MYSQL", score: 1700 },
-          { name: "NoSql", score: 1100 },
-          { name: "MONGODB", score: 1100 }
+          { title: "HTML 5", score: 1800 },
+          { title: "CSS", score: 1600 },
+          { title: "PHP", score: 1700 },
+          { title: "Laravel", score: 1800 },
+          { title: "Javascript", score: 1700 },
+          { title: "Vuejs", score: 1900 },
+          { title: "sql", score: 1700 },
+          { title: "MYSQL", score: 1700 },
+          { title: "NoSql", score: 1100 },
+          { title: "MONGODB", score: 1100 }
         ],
         [
-          { name: "PHPunit", score: 1100 },
-          { name: "Jest", score: 1100 },
-          { name: "Api", score: 1900 },
-          { name: "WebSocekt", score: 1700 },
-          { name: "SEO", score: 1400 },
-          { name: "Vuex", score: 1900 },
-          { name: "Vue-router", score: 1900 },
-          { name: "Vuetify", score: 1900 },
-          { name: "webpack", score: 1500 },
-          { name: "babel", score: 1100 }
+          { title: "PHPunit", score: 1100 },
+          { title: "Jest", score: 1100 },
+          { title: "Api", score: 1900 },
+          { title: "WebSocekt", score: 1700 },
+          { title: "SEO", score: 1400 },
+          { title: "Vuex", score: 1900 },
+          { title: "Vue-router", score: 1900 },
+          { title: "Vuetify", score: 1900 },
+          { title: "webpack", score: 1500 },
+          { title: "babel", score: 1100 }
         ],
         [
-          { name: "SOLID principles", score: 1900 },
-          { name: "Modeling Tools", score: 1500 },
-          { name: "Project management", score: 1400 },
-          { name: "Problem solving", score: 2000 },
-          { name: "Testing", score: 1700 },
-          { name: "Merise", score: 1700 },
-          { name: "UML", score: 1700 }
+          { title: "SOLID principles", score: 1900 },
+          { title: "Modeling Tools", score: 1500 },
+          { title: "Project management", score: 1400 },
+          { title: "Problem solving", score: 2000 },
+          { title: "Testing", score: 1700 },
+          { title: "Merise", score: 1700 },
+          { title: "UML", score: 1700 }
         ]
-      ]
+      ],
+      abst: [
+        {
+          title: "Rank",
+          name: "#1"
+        },
+        {
+          title: "Name",
+          name: "Merouane"
+        },
+        {
+          title: "Level",
+          name: "Mid level"
+        },
+        {
+          title: "Total score",
+          value: this.sumScore,
+          duration: 6
+        },
+        {
+          title: "Top score",
+          value: this.maxScore,
+          duration: 5
+        }
+      ],
+      maxScoreValue: 0,
+      sumScoreValue: 0
     };
   },
-  computed: {
+
+  methods: {
+    full_columns() {
+      return [this.abst, ...this.columns];
+    },
     maxScore() {
-      return Math.max(
-        ...this.columns.map(_c => Math.max(..._c.map(e => parseInt(e.score))))
-      );
+      if (!this.maxScoreValue)
+        this.maxScoreValue = Math.max(
+          ...this.columns.map(_c => Math.max(..._c.map(e => parseInt(e.score))))
+        );
+      return this.maxScoreValue;
     },
     sumScore() {
-      return this.columns.reduce(
-        (_acc_c, _cur_c) =>
-          _acc_c + _cur_c.reduce((_acc, _cur) => _acc + _cur.score, 0),
-        0
-      );
-    }
-  },
-  methods: {
+      if (!this.sumScoreValue)
+        this.sumScoreValue = this.columns.reduce(
+          (_acc_c, _cur_c) =>
+            _acc_c + _cur_c.reduce((_acc, _cur) => _acc + _cur.score, 0),
+          0
+        );
+      return this.sumScoreValue;
+    },
     playScoreCounter(timer) {
+      score_counter.play();
       setTimeout(() => {
-        score_counter.play();
-        setTimeout(() => {
-          score_counter.pause();
-          score_counter.currentTime = 0;
-          end_score_counter.play();
-        }, parseInt(timer));
-      }, 0);
+        score_counter.pause();
+        score_counter.currentTime = 0;
+        end_score_counter.play();
+      }, parseInt(timer));
     }
   },
+
   watch: {
     capabilities() {
-      this.playScoreCounter(8000);
+      this.playScoreCounter(6000);
     }
   }
 };
@@ -172,16 +187,16 @@ section {
   transform: perspective(1000px);
   transition: 1s;
 }
-#capabilities:hover .container {
+.container-scrolled {
   transform: perspective(1000px) rotateX(11deg) rotateY(0deg) scale3d(1, 1, 1);
 }
-  #capabilities:hover li {
+.li-scrolled {
   transform: scaleY(1.2) translateY(-25px);
-} 
+}
 
-#capabilities:hover li span {
+.span-scrolled {
   box-shadow: 2px 16px 4px rgba(0, 0, 0, 0.3);
-} 
+}
 .container::before {
   content: "";
   height: 100%;
@@ -200,7 +215,7 @@ section {
   border-image-slice: 1;
 }
 
-.total_points {
+.column_points_1 {
   height: 100%;
   width: 80%;
   z-index: 2;
@@ -208,10 +223,10 @@ section {
   display: flex;
   flex-direction: column;
 }
-.total_points li {
+.column_points_1 li {
   font-size: 24px;
 }
-.capabilitie_points_1 {
+.column_points_2 {
   height: 100%;
   width: 90%;
   z-index: 2;
@@ -219,11 +234,11 @@ section {
   display: flex;
   flex-direction: column;
 }
-.capabilitie_points_1 li {
+.column_points_2 li {
   font-size: 24px;
 }
-.capabilitie_points_2,
-.capabilitie_points_3 {
+.column_points_3,
+.column_points_4 {
   width: 100%;
   z-index: 2;
   height: 100%;

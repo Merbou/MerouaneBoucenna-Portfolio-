@@ -7,71 +7,23 @@
         data-tilt-max="10"
         data-tilt-speed="500"
         data-tilt-perspective="1000"
+        v-for="projet in projets"
+        :key="projet.title"
       >
         <div class="card-title">
-          <span>Vus</span>
+          <span>{{projet.title}}</span>
         </div>
         <div class="card-content">
           <div class="card-img">
-            <img src="/img/projet_1.png" alt srcset />
+            <img :src="projet.img" alt srcset />
           </div>
-          <span>Full init app for develepoment a platforms</span>
+          <span>{{projet.description}}</span>
         </div>
         <div class="card-footer">
           <div class="card-footer-content">
-            <span>225hr</span>
+            <span>{{projet.timeWork}}hrs</span>
             <icon class="svg" name="clock" fill="#fff" />
-            <span>150L</span>
-            <icon class="svg" name="coffee" fill="#fff" />
-          </div>
-        </div>
-      </div>
-      <div
-        class="card"
-        data-tilt
-        data-tilt-max="10"
-        data-tilt-speed="500"
-        data-tilt-perspective="1000"
-      >
-        <div class="card-title">
-          <span>Vus</span>
-        </div>
-        <div class="card-content">
-          <div class="card-img">
-            <img src="/img/projet_1.png" alt srcset />
-          </div>
-          <span>Full init app for develepoment a platforms</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-footer-content">
-            <span>225hr</span>
-            <icon class="svg" name="clock" fill="#fff" />
-            <span>150L</span>
-            <icon class="svg" name="coffee" fill="#fff" />
-          </div>
-        </div>
-      </div>
-      <div
-        class="card"
-        data-tilt
-        data-tilt-max="10"
-        data-tilt-speed="500"
-        data-tilt-perspective="1000"
-      >
-        <div class="card-title">
-          <span>Vus</span>
-        </div>
-        <div class="card-content">
-          <div class="card-img">
-            <img src="/img/projet_1.png" alt srcset />
-          </div>
-          <span>Full init app for develepoment a platforms</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-footer-content">
-            <span>225hr</span>
-            <icon class="svg" name="clock" fill="#fff" />
-            <span>150L</span>
+            <span>{{projet.litreCoffee}}L</span>
             <icon class="svg" name="coffee" fill="#fff" />
           </div>
         </div>
@@ -79,9 +31,9 @@
     </div>
 
     <div class="footer-scetion">
-      <span>{{animatedCount}}hr</span>
+      <span>{{animatedCountTimeWork}}hrs</span>
       <icon class="svg-footer-section" name="clock" fill="#fff" />
-      <span>{{animatedCount}}L</span>
+      <span>{{animatedCountLitreCoffee}}L</span>
       <icon class="svg-footer-section" name="coffee" fill="#fff" />
     </div>
   </section>
@@ -108,7 +60,31 @@ export default {
   },
   data() {
     return {
-      count: 0
+      countLitre: 0,
+      countTime: 0,
+      projets: [
+        {
+          title: "Vus 1",
+          description: "Full init app for develepoment a platforms",
+          img: "/img/projet_1.png",
+          timeWork: 225,
+          litreCoffee: 150
+        },
+        {
+          title: "Vus 2",
+          description: "Full init app for develepoment a platforms",
+          img: "/img/projet_1.png",
+          timeWork: 225,
+          litreCoffee: 150
+        },
+        {
+          title: "Vus 3",
+          description: "Full init app for develepoment a platforms",
+          img: "/img/projet_1.png",
+          timeWork: 225,
+          litreCoffee: 150
+        }
+      ]
     };
   },
   mounted() {
@@ -117,18 +93,38 @@ export default {
     });
   },
   computed: {
-    animatedCount: function() {
-      return this.count.toFixed(0);
+    animatedCountLitreCoffee: function() {
+      return this.countLitre.toFixed(0);
+    },
+    animatedCountTimeWork: function() {
+      return this.countTime.toFixed(0);
     }
+    // totalLitreCoffee() {
+    //   return this.projets
+    //     .map(e => e.litreCoffee)
+    //     .reduce((acc, curr) => acc + curr, 0);
+    // },
   },
   methods: {
-    countTo() {
-      gsap.to(this.$data, { duration: this.duration, count: 255 });
+    countTo(prams) {
+      gsap.to(this.$data, prams);
+    },
+    total(attrb) {
+      return this.projets
+        .map(e => e[attrb])
+        .reduce((acc, curr) => acc + curr, 0);
     }
   },
   watch: {
     works() {
-      this.countTo();
+      this.countTo({
+        duration: this.duration,
+        countLitre: this.total("litreCoffee")
+      });
+      this.countTo({
+        duration: this.duration,
+        countTime: this.total("timeWork")
+      });
     }
   }
 };
@@ -159,8 +155,8 @@ section {
   height: 400px;
   background: linear-gradient(
     to bottom,
-    rgba(225, 151, 105, 0.7) 5%,
-    rgba(66, 21, 200, 0.7) 90%
+    rgb(108 229 250) 0%,
+    rgb(58 24 192) 100%
   );
   transform-style: preserve-3d;
   display: flex;
@@ -173,6 +169,7 @@ section {
   position: absolute;
   width: 80%;
   top: 30px;
+  font-size: 30px;
   height: 10%;
   display: flex;
   justify-content: center;
@@ -197,7 +194,7 @@ section {
   position: absolute;
   height: 10%;
   width: 80%;
-  bottom: 5px;
+  bottom: 15px;
   display: flex;
   justify-content: center;
 }

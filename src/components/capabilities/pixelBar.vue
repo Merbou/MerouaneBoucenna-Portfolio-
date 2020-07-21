@@ -34,7 +34,7 @@ import gsap from "gsap";
 export default {
   name: "pixel-bar",
   props: {
-    perc: {
+    value: {
       type: Number,
       default: 0
     },
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     countTo() {
-      gsap.to(this.$data, { duration: this.duration, count: this.perc });
+      gsap.to(this.$data, { duration: this.duration, count: this.value });
     }
   },
   watch: {
