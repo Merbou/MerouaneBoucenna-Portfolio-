@@ -1,13 +1,21 @@
 <template>
   <section>
-    <div class="container" :class="{'container-scrolled':capabilities}">
+    <div class="title-capabilites">
+      <h1>Capabilites</h1>
+    </div>
+    <div class="content-capabilites" :class="{'content-capabilites-scrolled':capabilities}">
       <div :class="`column_points_${i+1}`" :key="i" v-for="(column,i) in full_columns()">
         <ul>
           <li :key="item.title" v-for="item in column" :class="{'li-scrolled':capabilities}">
             <span :class="{'span-scrolled':capabilities}">{{item.title}}: {{item.name}}</span>
 
             <template v-if="item.value||item.score">
-              <pixel-bar v-if="item.score" :play="capabilities" :value="item.score">
+              <pixel-bar
+                v-if="item.score"
+                :play="capabilities"
+                :value="item.score"
+                :classBar="capabilities?'span-scrolled':''"
+              >
                 <template v-slot:default="{count}">
                   <small>{{count}}/2000</small>
                 </template>
@@ -18,6 +26,7 @@
                 :value="item.value()"
                 :maxValue="item.value()"
                 :duration="item.duration"
+                :classBar="capabilities?'span-scrolled':''"
               >
                 <template v-slot:default="{count}">
                   <small>{{count}}</small>
@@ -46,7 +55,7 @@ export default {
   },
   data() {
     return {
-      init:false,
+      init: false,
       columns: [
         [
           { title: "HTML 5", score: 1800 },
@@ -132,7 +141,7 @@ export default {
       return this.sumScoreValue;
     },
     playScoreCounter(timer) {
-      this.init=true
+      this.init = true;
       score_counter.play();
       setTimeout(() => {
         score_counter.pause();
@@ -164,6 +173,8 @@ li {
 }
 li span {
   transition: 2s;
+  font-size: 2vw;
+  white-space: nowrap;
 }
 section {
   overflow: hidden;
@@ -171,20 +182,30 @@ section {
   background: rgb(6, 5, 75);
   z-index: 55;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
-.container {
-  margin: 50px;
+.title-capabilites {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
+.title-capabilites h1 {
+  color: #ffffff;
+  font-size: 7vw;
+  z-index: 55;
+}
+.content-capabilites {
+  margin-top: 20px;
   position: relative;
-  max-height: 1000px;
-  width: 88%;
+  height: 75%;
+  width: 90%;
   z-index: 55;
   display: flex;
   justify-content: space-between;
-  transform: perspective(1000px);
   transition: 1s;
 }
-.container-scrolled {
+.content-capabilites-scrolled {
   transform: perspective(1000px) rotateX(11deg) rotateY(0deg) scale3d(1, 1, 1);
 }
 .li-scrolled {
@@ -194,7 +215,7 @@ section {
 .span-scrolled {
   box-shadow: 2px 16px 4px rgba(0, 0, 0, 0.3);
 }
-.container::before {
+.content-capabilites::before {
   content: "";
   height: 100%;
   width: 100%;
@@ -220,9 +241,7 @@ section {
   display: flex;
   flex-direction: column;
 }
-.column_points_1 li {
-  font-size: 24px;
-}
+
 .column_points_2 {
   height: 100%;
   width: 90%;
@@ -231,9 +250,7 @@ section {
   display: flex;
   flex-direction: column;
 }
-.column_points_2 li {
-  font-size: 24px;
-}
+
 .column_points_3,
 .column_points_4 {
   width: 100%;
@@ -244,6 +261,61 @@ section {
   flex-direction: column;
 }
 small {
-  font-size: 15px;
+  font-size: 2vw;
+}
+@media only screen and (max-width: 770px) {
+  .content-capabilites {
+    flex-wrap: wrap;
+  }
+  .column_points_1 {
+    width: 100%;
+    height: 10%;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(
+      to right,
+      rgb(227, 154, 101) 0%,
+      rgb(233, 96, 142) 50%
+    );
+    border-image-slice: 1;
+  }
+  .column_points_1 ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 22px 10px 0px 10px;
+  }
+
+  .column_points_2,
+  .column_points_3,
+  .column_points_4 {
+    width: 33%;
+    height: 90%;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(
+      to right,
+      rgb(227, 154, 101) 0%,
+      rgb(233, 96, 142) 50%
+    );
+
+    border-image-slice: 1;
+  }
+  .column_points_2 ul,
+  .column_points_3 ul,
+  .column_points_4 ul {
+    padding: 5px;
+  }
+
+  li span {
+    font-size: 3.4vw;
+  }
+  small {
+    font-size: 2vw;
+  }
+}
+@media only screen and (max-width: 560px) {
+  small {
+    font-size: 12px;
+  }
 }
 </style>

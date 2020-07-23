@@ -84,5 +84,6 @@ ul {
 }
 li {
   color: #06054b;
+  font-weight: 900;
 }
 </style>

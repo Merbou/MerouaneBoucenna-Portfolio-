@@ -56,12 +56,12 @@ header {
   z-index: 4;
   padding: 100px;
   padding-top: 200px;
-
   position: absolute !important;
   top: 0px !important;
-  font-size: 70px;
+  font-size: 5vw;
   left: auto !important;
   color: #ffffff;
+  width: 100%;
 }
 #author {
   padding: 100px;
@@ -72,11 +72,12 @@ header {
   flex-direction: column;
   position: absolute !important;
   top: 0px !important;
-  font-size: 70px;
+  font-size: 5vw;
   left: auto !important;
 }
 .author-name {
   margin-bottom: 5px;
+  width: 100%;
 }
 .social-media {
   width: 100%;
@@ -84,7 +85,32 @@ header {
   justify-content: flex-end;
 }
 .social-media svg {
-  width: 100px;
+  width: 6vw;
   margin: 10px;
+}
+
+@media only screen and (max-width: 950px) {
+  #author {
+    padding: 40px;
+    padding-top: 240px;
+  }
+  .social-media svg {
+    width: 7vw;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  #author {
+    padding: 30px;
+    padding-top: 240px;
+  }
+  #post-name {
+    padding: 30px;
+    padding-top: 200px;
+    font-size: 6vw;
+  }
+  .social-media svg {
+    width: 10vw;
+  }
 }
 </style>

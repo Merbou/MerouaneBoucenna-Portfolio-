@@ -1,33 +1,38 @@
 <template>
   <section>
-    <aside class="biography">
-      <p>
-        BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
-        baccalaureate (scientist) from Omar ibn el Khattab high school in 2016, License degree (information systems
-        and software engineer) from University of Algiers 2019, He is studying at Houari Boumediene University of
-        Science and Technology to receive master degree (Bioinformatics).
-      </p>
-      <p>
-        Merouane first became interested in software development in the first year of university where he discovered
-        the software development, he loved that so much that he decided to be a software engineer, since then he
-        stay awake for learning and get more experience form anything and anywhere that related with software
-        development (friends, books, events, blogs, documentaries, series)
-      </p>
-      <p>
-        Merouane is now a web developer with extensive experience, large knowledge of languages of web
-        development and management skills, like working in collaboration team.
-      </p>
-    </aside>
-    
-    <div class="cub-computer" :class="{'cub-computer-scrolled':about}">
-      <div class="computer_2" :class="{'computer_2-scrolled':about}">
-        <img src="/img/computer_2.png" alt="computer_2" />
-        <span class="computer-shadow" :class="{'computer-shadow-scrolled':about}" ></span>
-      </div>
+    <div class="title-about">
+      <h1>About</h1>
+    </div>
+    <div class="content-about">
+      <aside class="biography">
+        <p>
+          BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
+          baccalaureate (scientist) from Omar ibn el Khattab high school in 2016, License degree (information systems
+          and software engineer) from University of Algiers 2019, He is studying at Houari Boumediene University of
+          Science and Technology to receive master degree (Bioinformatics).
+        </p>
+        <p>
+          Merouane first became interested in software development in the first year of university where he discovered
+          the software development, he loved that so much that he decided to be a software engineer, since then he
+          stay awake for learning and get more experience form anything and anywhere that related with software
+          development (friends, books, events, blogs, documentaries, series)
+        </p>
+        <p>
+          Merouane is now a web developer with extensive experience, large knowledge of languages of web
+          development and management skills, like working in collaboration team.
+        </p>
+      </aside>
 
-      <div class="cub" :class="{'cub-scrolled':about}">
-        <img src="/img/cub.png" alt="cub" />
-        <span class="cub-shadow" :class="{'cub-shadow-scrolled':about}"></span>
+      <div class="cub-computer" :class="{'cub-computer-scrolled':about}">
+        <div class="computer_2" :class="{'computer_2-scrolled':about}">
+          <img src="/img/computer_2.png" alt="computer_2" />
+          <span class="computer-shadow" :class="{'computer-shadow-scrolled':about}"></span>
+        </div>
+
+        <div class="cub" :class="{'cub-scrolled':about}">
+          <img src="/img/cub.png" alt="cub" />
+          <span class="cub-shadow" :class="{'cub-shadow-scrolled':about}"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -35,9 +40,9 @@
 
 <script>
 export default {
-  props:{
-    about:{
-      type:Boolean
+  props: {
+    about: {
+      type: Boolean
     }
   }
 };
@@ -55,10 +60,24 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
 }
-
+.title-about {
+  display: flex;
+  justify-content: center;
+}
+.title-about h1 {
+  color: #ffffff;
+  font-size: 7vw;
+  z-index: 55;
+}
+.content-about {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
 .biography {
-  max-width: 500px;
+  width: 50%;
   z-index: 5;
 }
 .biography p {
@@ -66,14 +85,14 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: justify;
+  font-size: 2vw;
 }
 
 .cub-computer {
-  max-width: 700px;
+  width: 40%;
   z-index: 5;
   transition: 1s;
   position: relative;
-  max-height: 500px;
   transform: perspective(400px);
 }
 .cub-computer::before {
@@ -100,7 +119,7 @@ section {
 }
 
 .computer_2 img {
-  max-width: 600px;
+  width: 100%;
   height: auto;
 }
 .computer_2 {
@@ -110,12 +129,12 @@ section {
 }
 .cub img {
   height: auto;
-  max-width: 130px;
+  width: 20%;
 }
 .cub {
   position: absolute;
-  top: -20px;
-  left: 0px;
+  top: -70px;
+  left: 70px;
   z-index: 60;
   transition: 1s;
 }
@@ -123,8 +142,9 @@ section {
   position: absolute;
   bottom: 0px;
   height: 228px;
-  width: 300px;
-  right: 125px;
+  height: 50%;
+  left: 60px;
+  width: 60%;
   z-index: -1;
   border-radius: 10px;
   transform: rotateX(deg);
@@ -137,9 +157,9 @@ section {
 .cub-shadow {
   position: absolute;
   bottom: 0px;
-  height: 50px;
-  width: 100px;
-  right: 0px;
+  height: 20%;
+  width: 20%;
+  left: 0px;
   z-index: -1;
   border-radius: 100%;
   background: rgba(0, 0, 0, 0.2);
@@ -162,5 +182,52 @@ section {
 }
 .cub-shadow-scrolled {
   transform: translateY(30px) translateZ(500px) scale(0.8);
+}
+
+@media only screen and (max-width: 750px) {
+  .title-about {
+    height: 10px;
+  }
+  .content-about {
+    padding-top: 0px;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+  }
+  .biography {
+    width: 100%;
+    padding: 0px 50px 0px 50px;
+  }
+
+  .biography p {
+    font-size: 2.5vw;
+  }
+  .cub-computer {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .title-about h1 {
+    font-size: 10vw;
+  }
+  .biography p {
+    font-size: 3vw;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .title-about h1 {
+    font-size: 15vw;
+  }
+  .biography p {
+    font-size: 3.5vw;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .biography p {
+    font-size: 4.2vw;
+  }
+  .cub-computer {
+    width: 66%;
+  }
 }
 </style>

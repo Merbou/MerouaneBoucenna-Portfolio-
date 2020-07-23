@@ -76,10 +76,8 @@ export default {
 }
 #about {
   height: 100vh;
-  padding-top: 100px;
 }
 #capabilities {
-  padding-top: 100px;
   height: 110vh;
 }
 #works {

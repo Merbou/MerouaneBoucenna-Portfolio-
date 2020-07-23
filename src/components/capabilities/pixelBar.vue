@@ -1,5 +1,5 @@
 <template>
-  <div id="center">
+  <div id="center" :class="classBar">
     <span class="content">
       <slot :count="animatedCount" />
     </span>
@@ -48,6 +48,9 @@ export default {
     },
     play: {
       type: Boolean
+    },
+    classBar: {
+      type: String
     }
   },
   data() {
@@ -75,7 +78,7 @@ export default {
 
 <style>
 #center {
-  height: 15px;
+  height: 2vw;
   width: 100%;
   display: flex;
   position: relative;
@@ -83,10 +86,12 @@ export default {
   background: rgba(0, 0, 0, 1);
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 2px;
+  transition: 1s;
 }
 .content {
   position: absolute;
-  bottom: 0px;
+  width: 100%;
+  height: 100%;
   top: 0px;
   z-index: 10;
   left: 0px;
