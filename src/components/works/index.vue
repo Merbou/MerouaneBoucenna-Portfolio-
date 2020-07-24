@@ -1,6 +1,9 @@
 <template>
   <section>
-    <div class="container-works">
+    <div class="title-works">
+      <h1>My works</h1>
+    </div>
+    <div class="content-works">
       <div
         class="card"
         data-tilt
@@ -47,16 +50,16 @@ import gsap from "gsap";
 export default {
   name: "works",
   components: {
-    icon
+    icon,
   },
   props: {
     works: {
-      type: Boolean
+      type: Boolean,
     },
     duration: {
       type: Number,
-      default: 4
-    }
+      default: 4,
+    },
   },
   data() {
     return {
@@ -68,37 +71,37 @@ export default {
           description: "Full init app for develepoment a platforms",
           img: "/img/projet_1.png",
           timeWork: 225,
-          litreCoffee: 150
+          litreCoffee: 150,
         },
         {
           title: "Vus 2",
           description: "Full init app for develepoment a platforms",
           img: "/img/projet_1.png",
           timeWork: 225,
-          litreCoffee: 150
+          litreCoffee: 150,
         },
         {
           title: "Vus 3",
           description: "Full init app for develepoment a platforms",
           img: "/img/projet_1.png",
           timeWork: 225,
-          litreCoffee: 150
-        }
-      ]
+          litreCoffee: 150,
+        },
+      ],
     };
   },
   mounted() {
-    Array.from(document.getElementsByClassName("card")).forEach(element => {
+    Array.from(document.getElementsByClassName("card")).forEach((element) => {
       vanillaTilt.init(element);
     });
   },
   computed: {
-    animatedCountLitreCoffee: function() {
+    animatedCountLitreCoffee: function () {
       return this.countLitre.toFixed(0);
     },
-    animatedCountTimeWork: function() {
+    animatedCountTimeWork: function () {
       return this.countTime.toFixed(0);
-    }
+    },
   },
   methods: {
     countTo(prams) {
@@ -106,22 +109,22 @@ export default {
     },
     total(attrb) {
       return this.projets
-        .map(e => e[attrb])
+        .map((e) => e[attrb])
         .reduce((acc, curr) => acc + curr, 0);
-    }
+    },
   },
   watch: {
     works() {
       this.countTo({
         duration: this.duration,
-        countLitre: this.total("litreCoffee")
+        countLitre: this.total("litreCoffee"),
       });
       this.countTo({
         duration: this.duration,
-        countTime: this.total("timeWork")
+        countTime: this.total("timeWork"),
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -133,17 +136,35 @@ section {
   display: flex;
   flex-direction: column;
 }
-.container-works {
+
+.title-works {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 12%;
+}
+.title-works h1 {
+  color: #ffffff;
+  font-size: 7vw;
+  z-index: 55;
+}
+.content-works {
   width: 100%;
+  height: 70%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .card {
   position: relative;
-  width: 350px;
+  width: 25%;
   z-index: 55;
   height: 400px;
-  background: linear-gradient( to bottom, rgb(58 24 192) 0%, rgb(227 154 101) 100% );
+  background: linear-gradient(
+    to bottom,
+    rgb(58 24 192) 0%,
+    rgb(227 154 101) 100%
+  );
   transform-style: preserve-3d;
   display: flex;
   justify-content: space-around;
@@ -154,7 +175,7 @@ section {
 .card-title {
   position: absolute;
   width: 80%;
-  top: 30px;
+  top: 0px;
   font-size: 30px;
   height: 10%;
   display: flex;
@@ -196,6 +217,7 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: justify;
+  font-size: 14px;
 }
 .card-footer-content {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
@@ -218,18 +240,63 @@ section {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  height: 15%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .footer-scetion span {
-  margin-top: 31px;
-  font-size: 55px;
+  margin-top: 5px;
+  font-size: 40px;
 }
 .svg-footer-section {
   z-index: 55;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   margin: 10px;
   margin-right: 50px;
+}
+
+@media only screen and (max-width: 1010px) {
+  .card {
+    width: 32%;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  .card-content span {
+    font-size: 12px;
+  }
+  .card-footer-content span {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  .svg {
+    width: 22px;
+    height: 22px;
+    margin: 4px;
+  }
+  .content-works {
+    flex-wrap: wrap;
+  }
+  .card {
+    width: 34%;
+    margin: 5px;
+    height: 50%;
+  }
+  .footer-scetion span {
+    font-size: 36px;
+  }
+  .svg-footer-section {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .card {
+    width: 45%;
+    margin: 5px;
+    height: 50%;
+  }
 }
 </style>

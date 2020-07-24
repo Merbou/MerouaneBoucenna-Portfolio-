@@ -46,12 +46,12 @@ let score_counter = new Audio("/sound/score_counter.mp3");
 let end_score_counter = new Audio("/sound/end_score_counter.mp3");
 export default {
   components: {
-    pixelBar
+    pixelBar,
   },
   props: {
     capabilities: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -67,7 +67,7 @@ export default {
           { title: "sql", score: 1700 },
           { title: "MYSQL", score: 1700 },
           { title: "NoSql", score: 1100 },
-          { title: "MONGODB", score: 1100 }
+          { title: "MONGODB", score: 1100 },
         ],
         [
           { title: "PHPunit", score: 1100 },
@@ -79,7 +79,7 @@ export default {
           { title: "Vue-router", score: 1900 },
           { title: "Vuetify", score: 1900 },
           { title: "webpack", score: 1500 },
-          { title: "babel", score: 1100 }
+          { title: "babel", score: 1100 },
         ],
         [
           { title: "SOLID principles", score: 1900 },
@@ -88,35 +88,35 @@ export default {
           { title: "Problem solving", score: 2000 },
           { title: "Testing", score: 1700 },
           { title: "Merise", score: 1700 },
-          { title: "UML", score: 1700 }
-        ]
+          { title: "UML", score: 1700 },
+        ],
       ],
       abst: [
         {
           title: "Rank",
-          name: "#1"
+          name: "#1",
         },
         {
           title: "Name",
-          name: "Merouane"
+          name: "Merouane",
         },
         {
           title: "Level",
-          name: "Mid level"
+          name: "Mid level",
         },
         {
           title: "Total score",
           value: this.sumScore,
-          duration: 6
+          duration: 6,
         },
         {
           title: "Top score",
           value: this.maxScore,
-          duration: 5
-        }
+          duration: 5,
+        },
       ],
       maxScoreValue: 0,
-      sumScoreValue: 0
+      sumScoreValue: 0,
     };
   },
 
@@ -127,7 +127,9 @@ export default {
     maxScore() {
       if (!this.maxScoreValue)
         this.maxScoreValue = Math.max(
-          ...this.columns.map(_c => Math.max(..._c.map(e => parseInt(e.score))))
+          ...this.columns.map((_c) =>
+            Math.max(..._c.map((e) => parseInt(e.score)))
+          )
         );
       return this.maxScoreValue;
     },
@@ -148,18 +150,21 @@ export default {
         score_counter.currentTime = 0;
         end_score_counter.play();
       }, parseInt(timer));
-    }
+    },
   },
 
   watch: {
     capabilities() {
       if (!this.init) this.playScoreCounter(6000);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
+#center {
+  height: 1.3vw;
+}
 ul {
   padding: 30px;
 }
@@ -186,8 +191,8 @@ section {
   align-items: center;
 }
 .title-capabilites {
-  height: 10%;
   display: flex;
+  height: 5%;
   justify-content: center;
 }
 .title-capabilites h1 {
@@ -198,7 +203,7 @@ section {
 .content-capabilites {
   margin-top: 20px;
   position: relative;
-  height: 75%;
+  height: 95%;
   width: 90%;
   z-index: 55;
   display: flex;
@@ -261,15 +266,33 @@ section {
   flex-direction: column;
 }
 small {
-  font-size: 2vw;
+  font-size: 1.3vw;
 }
-@media only screen and (max-width: 770px) {
+
+@media only screen and (max-width: 1500px) {
+  .content-capabilites::before {
+    height: 82%;
+  }
+  .column_points_1,
+  .column_points_2,
+  .column_points_3,
+  .column_points_4 {
+    height: 82%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  #center {
+    height: 1.5vw;
+  }
   .content-capabilites {
     flex-wrap: wrap;
   }
+  .content-capabilites::before {
+    height: 100%;
+  }
   .column_points_1 {
     width: 100%;
-    height: 10%;
+    height: 15%;
     border-bottom: 2px solid transparent;
     border-image: linear-gradient(
       to right,
@@ -281,14 +304,15 @@ small {
   .column_points_1 ul {
     display: flex;
     justify-content: space-around;
-    padding: 22px 10px 0px 10px;
+    align-items: center;
+    padding: 35px 10px 0px 10px;
   }
 
   .column_points_2,
   .column_points_3,
   .column_points_4 {
     width: 33%;
-    height: 90%;
+    height: 85%;
     display: flex;
     justify-content: space-around;
     border-bottom: 2px solid transparent;
@@ -307,15 +331,39 @@ small {
   }
 
   li span {
-    font-size: 3.4vw;
+    font-size: 2.5vw;
   }
   small {
-    font-size: 2vw;
+    font-size: 1.4vw;
+  }
+}
+@media only screen and (max-width: 760px) {
+  #center {
+    height: 2vw;
   }
 }
 @media only screen and (max-width: 560px) {
+  #center {
+    height: 2.4vw;
+  }
+  li span {
+    font-size: 3vw;
+  }
   small {
     font-size: 12px;
   }
+
+}
+@media only screen and (max-width: 460px) {
+  #center {
+    height: 3.5vw;
+  }
+  li span {
+    font-size: 3.5vw;
+  }
+  small {
+    font-size: 12px;
+  }
+
 }
 </style>
