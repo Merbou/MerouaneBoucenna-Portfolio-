@@ -140,7 +140,7 @@ section {
 .title-works {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   height: 12%;
 }
 .title-works h1 {
@@ -241,29 +241,38 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   height: 15%;
+  width: 100%;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .footer-scetion span {
   margin-top: 5px;
-  font-size: 40px;
+  font-size: 4vw;
 }
 .svg-footer-section {
   z-index: 55;
-  width: 70px;
-  height: 70px;
-  margin: 10px;
-  margin-right: 50px;
+  width: 6vw;
+  height: 6vw;
+  margin: 20px;
 }
 
 @media only screen and (max-width: 1010px) {
   .card {
     width: 32%;
   }
+  .svg-footer-section {
+    width: 8vw;
+    height: 8vw;
+  }
 }
 
 @media only screen and (max-width: 710px) {
+  .card-title span {
+    font-size: 20px;
+  }
+
   .card-content span {
     font-size: 12px;
   }
@@ -284,12 +293,10 @@ section {
     margin: 5px;
     height: 50%;
   }
-  .footer-scetion span {
-    font-size: 36px;
-  }
+
   .svg-footer-section {
-    width: 60px;
-    height: 60px;
+    width: 10vw;
+    height: 10vw;
   }
 }
 @media only screen and (max-width: 580px) {
@@ -297,6 +304,9 @@ section {
     width: 45%;
     margin: 5px;
     height: 50%;
+  }
+  .footer-scetion span {
+    font-size: 6vw;
   }
 }
 </style>

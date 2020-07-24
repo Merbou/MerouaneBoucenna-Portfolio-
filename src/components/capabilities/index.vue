@@ -192,8 +192,9 @@ section {
 }
 .title-capabilites {
   display: flex;
-  height: 5%;
+  height: 10%;
   justify-content: center;
+  align-items: flex-end;
 }
 .title-capabilites h1 {
   color: #ffffff;
@@ -201,7 +202,6 @@ section {
   z-index: 55;
 }
 .content-capabilites {
-  margin-top: 20px;
   position: relative;
   height: 95%;
   width: 90%;
@@ -222,7 +222,7 @@ section {
 }
 .content-capabilites::before {
   content: "";
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: block;
   box-sizing: border-box;
@@ -239,7 +239,7 @@ section {
 }
 
 .column_points_1 {
-  height: 100%;
+  height: 90%;
   width: 80%;
   z-index: 2;
   border-right: 2px solid rgb(231, 118, 128);
@@ -248,7 +248,7 @@ section {
 }
 
 .column_points_2 {
-  height: 100%;
+  height: 90%;
   width: 90%;
   z-index: 2;
   border-right: 2px solid rgb(233, 96, 142);
@@ -260,7 +260,7 @@ section {
 .column_points_4 {
   width: 100%;
   z-index: 2;
-  height: 100%;
+  height: 90%;
   border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
@@ -269,7 +269,7 @@ small {
   font-size: 1.3vw;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1200px) {
   .content-capabilites::before {
     height: 82%;
   }
@@ -352,7 +352,6 @@ small {
   small {
     font-size: 12px;
   }
-
 }
 @media only screen and (max-width: 460px) {
   #center {
@@ -364,6 +363,5 @@ small {
   small {
     font-size: 12px;
   }
-
 }
 </style>
