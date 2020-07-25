@@ -227,13 +227,13 @@ section {
   display: flex;
 }
 .card-footer-content span {
-  margin-top: 14px;
+  margin-top: 8px;
 }
 .svg {
   z-index: 55;
   width: 30px;
   height: 30px;
-  margin: 7px;
+  margin: 0px 5px 0px 5px;
 }
 
 .footer-scetion {
@@ -277,7 +277,6 @@ section {
     font-size: 12px;
   }
   .card-footer-content span {
-    margin-top: 10px;
     font-size: 13px;
   }
   .svg {

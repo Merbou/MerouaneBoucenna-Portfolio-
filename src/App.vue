@@ -85,6 +85,6 @@ export default {
 }
 #footer {
   padding-top: 25px;
-  height: 20vh;
+  height: 18vh;
 }
 </style>

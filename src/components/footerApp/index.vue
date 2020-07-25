@@ -31,14 +31,14 @@
 import icon from "../icons";
 export default {
   components: {
-    icon
+    icon,
   },
   name: "footerApp",
   data() {
     return {
-      name: "MB Protfolio"
+      name: "MB Protfolio",
     };
-  }
+  },
 };
 </script>
 
@@ -53,6 +53,7 @@ section {
   display: flex;
   mix-blend-mode: screen;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   mix-blend-mode: screen;
   background: #fff;
@@ -82,8 +83,56 @@ section {
 ul {
   padding: 0px;
 }
-li {
+.content-footer ul li {
   color: #06054b;
   font-weight: 900;
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 950px) {
+  .content-footer ul li {
+    font-size: 23px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .content-footer ul li {
+    font-size: 20px;
+  }
+  .svg {
+    width: 45px;
+  }
+  .footer-footer {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .content-footer {
+    justify-content: center;
+  }
+  .content-footer ul li {
+    font-size: 15px;
+  }
+  .svg {
+    width: 35px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .content-footer ul li {
+    font-size: 13px;
+  }
+  .svg {
+    width: 28px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .content-footer ul li {
+    font-size: 13px;
+  }
+  .svg {
+    width: 25px;
+  }
 }
 </style>
