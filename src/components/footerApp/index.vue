@@ -7,13 +7,23 @@
       </ul>
       <ul class="followers">
         <li>
-          <icon class="svg" fill="#06054b" name="facebook" />
+          <icon
+            class="svg"
+            fill="#06054b"
+            name="stackoverflow"
+            :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
+          />
         </li>
         <li>
-          <icon class="svg" fill="#06054b" name="twitter" />
+          <icon class="svg" fill="#06054b" name="github" :to="'https://github.com/Merbou'" />
         </li>
         <li>
-          <icon class="svg" fill="#06054b" name="github" />
+          <icon
+            class="svg"
+            fill="#06054b"
+            name="facebook"
+            :to="'https://www.facebook.com/Merouane.MB0'"
+          />
         </li>
       </ul>
       <ul>

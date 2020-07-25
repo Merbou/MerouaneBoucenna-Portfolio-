@@ -4,12 +4,17 @@
       <div id="post-name" data-depth="0.2">Full Stack Web Developer</div>
       <div id="author" data-depth="0.5">
         <h1 class="author-name">Merouane Boucenna</h1>
-        <div class="social-media">
-          <icon class="svg" name="github" fill="#fff" />
-          <icon class="svg" name="facebook" fill="#fff" />
-          <icon class="svg" name="twitter" fill="#fff" />
-        </div>
       </div>
+    </div>
+    <div class="social-media">
+      <icon
+        class="svg"
+        name="stackoverflow"
+        fill="#fff"
+        :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
+      />
+      <icon class="svg" name="github" fill="#fff" :to="'https://github.com/Merbou'" />
+      <icon class="svg" name="facebook" fill="#fff" :to="'https://www.facebook.com/Merouane.MB0'" />
     </div>
   </header>
 </template>
@@ -20,17 +25,17 @@ import icon from "../icons";
 export default {
   name: "ScreenApp",
   components: {
-    icon
+    icon,
   },
   props: {
     header: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   mounted() {
     var scene = document.getElementById("scene");
     new Parallax(scene);
-  }
+  },
 };
 </script>
 
@@ -80,9 +85,10 @@ header {
   width: 100%;
 }
 .social-media {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  z-index: 55;
+  bottom: 0px;
+  right: 0px;
 }
 .social-media svg {
   width: 6vw;

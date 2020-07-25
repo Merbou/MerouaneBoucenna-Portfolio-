@@ -75,13 +75,16 @@ export default {
   height: 100vh;
 }
 #about {
-  height: 100vh;
-}
-#capabilities {
+  padding-top: 100px;
   height: 110vh;
 }
+#capabilities {
+  padding-top: 100px;
+  height: 114vh;
+}
 #works {
-  height: 102vh;
+  padding-top: 100px;
+  height: 110vh;
 }
 #footer {
   padding-top: 25px;

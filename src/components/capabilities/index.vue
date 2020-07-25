@@ -203,7 +203,7 @@ section {
 }
 .content-capabilites {
   position: relative;
-  height: 95%;
+  height: 96%;
   width: 90%;
   z-index: 55;
   display: flex;
@@ -222,7 +222,7 @@ section {
 }
 .content-capabilites::before {
   content: "";
-  height: 90%;
+  height: 96%;
   width: 100%;
   display: block;
   box-sizing: border-box;
@@ -239,7 +239,7 @@ section {
 }
 
 .column_points_1 {
-  height: 90%;
+  height: 96%;
   width: 80%;
   z-index: 2;
   border-right: 2px solid rgb(231, 118, 128);
@@ -248,7 +248,7 @@ section {
 }
 
 .column_points_2 {
-  height: 90%;
+  height: 96%;
   width: 90%;
   z-index: 2;
   border-right: 2px solid rgb(233, 96, 142);
@@ -260,7 +260,7 @@ section {
 .column_points_4 {
   width: 100%;
   z-index: 2;
-  height: 90%;
+  height: 96%;
   border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
