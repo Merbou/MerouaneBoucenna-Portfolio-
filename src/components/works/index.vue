@@ -17,7 +17,7 @@
           <span>{{projet.title}}</span>
         </div>
         <div class="card-content">
-          <div class="card-img">
+          <div class="card-img" @click="redirectTo(projet)">
             <img :src="projet.img" alt srcset />
           </div>
           <span>{{projet.description}}</span>
@@ -67,25 +67,27 @@ export default {
       countTime: 0,
       projets: [
         {
-          title: "Vus 1",
-          description: "Full init app for develepoment a platforms",
-          img: "/img/projet_1.png",
-          timeWork: 225,
-          litreCoffee: 150,
+          title: "Vus",
+          description: "beautiful dashboard combination of Laravel, Vue.js",
+          img: "/img/vus.png",
+          code_source: "https://github.com/Merbou/vus",
+          timeWork: 120,
+          litreCoffee: 2.5,
         },
         {
-          title: "Vus 2",
-          description: "Full init app for develepoment a platforms",
-          img: "/img/projet_1.png",
-          timeWork: 225,
-          litreCoffee: 150,
+          title: "B2B",
+          description: "A platform for organizing business to business",
+          img: "/img/b_2_b.png",
+          timeWork: 240,
+          litreCoffee: 30,
         },
         {
-          title: "Vus 3",
-          description: "Full init app for develepoment a platforms",
-          img: "/img/projet_1.png",
-          timeWork: 225,
-          litreCoffee: 150,
+          title: "CareMed",
+          description: "Application for managing medical appointments",
+          code_source: "https://github.com/Merbou/caremed",
+          img: "/img/care_med.png",
+          timeWork: 102,
+          litreCoffee: 4.5,
         },
       ],
     };
@@ -97,7 +99,7 @@ export default {
   },
   computed: {
     animatedCountLitreCoffee: function () {
-      return this.countLitre.toFixed(0);
+      return this.countLitre.toFixed(1);
     },
     animatedCountTimeWork: function () {
       return this.countTime.toFixed(0);
@@ -111,6 +113,10 @@ export default {
       return this.projets
         .map((e) => e[attrb])
         .reduce((acc, curr) => acc + curr, 0);
+    },
+    redirectTo({ code_source, img }) {
+      img && this.$zoom(img);
+      code_source && window.open(code_source);
     },
   },
   watch: {
@@ -192,6 +198,9 @@ section {
 .card-content span {
   transform: translateZ(20px);
 }
+.card-img {
+  cursor: pointer;
+}
 .card-img img {
   max-width: 100%;
   max-height: 100%;
@@ -257,7 +266,6 @@ section {
   height: 6vw;
   margin: 20px;
 }
-
 @media only screen and (max-width: 1010px) {
   .card {
     width: 32%;

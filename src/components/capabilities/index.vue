@@ -188,6 +188,7 @@ section {
   z-index: 55;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   align-items: center;
 }
 .title-capabilites {
