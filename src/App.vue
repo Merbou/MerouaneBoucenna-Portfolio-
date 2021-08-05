@@ -1,7 +1,7 @@
 <template>
   <div id="app">
+    <div id="particles-js"></div>
     <loader :loading="loading" />
-    <vue-particles class="particles" />
     <Header :header="header" id="header" @hook:mounted="offLoader" />
     <about :about="about" id="about" />
     <capabilities :capabilities="capabilities" id="capabilities" />
@@ -11,13 +11,14 @@
 </template>
 
 <script>
+import "particles.js";
 import loader from "./materials/loader";
 import Header from "./components/header";
 import About from "./components/about";
 import Capabilities from "./components/capabilities";
 import Works from "./components/works";
 import Footer from "./components/footer";
-
+import particlesConfig from "./config/particles.config";
 export default {
   name: "App",
   components: {
@@ -43,8 +44,12 @@ export default {
   },
   mounted() {
     this.scroll();
+    this.initParticles();
   },
   methods: {
+    initParticles() {
+      window.particlesJS("particles-js", particlesConfig);
+    },
     offLoader() {
       setTimeout(() => (this.loading = false), 2000);
     },
@@ -84,35 +89,38 @@ export default {
   box-sizing: border-box;
 }
 
+html,
 body {
   padding: 0px;
   margin: 0px;
-  font-family: pix;
+  font-family: pix !important;
+  /* height: 100%; */
 }
-.particles {
+#particles-js {
   position: absolute;
-  z-index: 1;
-  height: 455vh;
+  opacity: 0.8;
+  position: fixed;
   width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
 }
 #header {
   height: 100vh;
 }
-#about {
-  padding-top: 100px;
-  height: 110vh;
-}
-#capabilities {
-  padding-top: 100px;
-  height: 114vh;
-}
-#works {
-  padding-top: 100px;
-  height: 110vh;
+#about,
+#capabilities,
+#works,
+#footer {
+  height: 100%;
 }
 #footer {
-  padding-top: 30px;
-  height: 21vh;
+  padding: 30px 0px 0px;
 }
 
 .__image-zoom__img-outer-container {

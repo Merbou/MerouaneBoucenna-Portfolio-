@@ -1,43 +1,53 @@
 <template>
-  <section>
-    <div class="title-works">
-      <h1>My works</h1>
-    </div>
-    <div class="content-works">
-      <div
-        class="card"
-        data-tilt
-        data-tilt-max="10"
-        data-tilt-speed="500"
-        data-tilt-perspective="1000"
-        v-for="projet in projets"
-        :key="projet.title"
-      >
-        <div class="card-title">
-          <span>{{projet.title}}</span>
+  <section class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="title-works">
+          <h1>My works</h1>
         </div>
-        <div class="card-content">
-          <div class="card-img" @click="redirectTo(projet)">
-            <img :src="projet.img" alt srcset />
-          </div>
-          <span>{{projet.description}}</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-footer-content">
-            <span>{{projet.timeWork}}hrs</span>
-            <icon class="svg" name="clock" fill="#fff" />
-            <span>{{projet.litreCoffee}}L</span>
-            <icon class="svg" name="coffee" fill="#fff" />
+      </div>
+      <div class="row">
+        <div
+          class="col-md-4 col-sm-6 col-12 col-card"
+          v-for="projet in projets"
+          :key="projet.title"
+        >
+          <div
+            class="card"
+            data-tilt
+            data-tilt-max="10"
+            data-tilt-speed="500"
+            data-tilt-perspective="1000"
+            :key="projet.title"
+          >
+            <div class="card-title">
+              <span>{{ projet.title }}</span>
+            </div>
+            <div class="card-content">
+              <div class="card-img" @click="redirectTo(projet)">
+                <img :src="projet.img" alt srcset />
+              </div>
+              <span>{{ projet.description }}</span>
+            </div>
+            <div class="card-footer">
+              <div class="card-footer-content">
+                <span>{{ projet.timeWork }}hrs</span>
+                <icon class="svg" name="clock" fill="#fff" />
+                <span>{{ projet.litreCoffee }}L</span>
+                <icon class="svg" name="coffee" fill="#fff" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="footer-scetion">
-      <span>{{animatedCountTimeWork}}hrs</span>
-      <icon class="svg-footer-section" name="clock" fill="#fff" />
-      <span>{{animatedCountLitreCoffee}}L</span>
-      <icon class="svg-footer-section" name="coffee" fill="#fff" />
+      <div class="row">
+        <div class="footer-scetion">
+          <span>{{ animatedCountTimeWork }}hrs</span>
+          <icon class="svg-footer-section" name="clock" fill="#fff" />
+          <span>{{ animatedCountLitreCoffee }}L</span>
+          <icon class="svg-footer-section" name="coffee" fill="#fff" />
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -154,17 +164,16 @@ section {
   font-size: 7vw;
   z-index: 55;
 }
-.content-works {
-  width: 100%;
-  height: 70%;
+.col-card {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 .card {
   position: relative;
-  width: 25%;
+  width: 90%;
   z-index: 55;
+  margin-top: 10px;
   height: 400px;
   background: linear-gradient(
     to bottom,
@@ -265,55 +274,5 @@ section {
   width: 6vw;
   height: 6vw;
   margin: 20px;
-}
-@media only screen and (max-width: 1010px) {
-  .card {
-    width: 32%;
-  }
-  .svg-footer-section {
-    width: 8vw;
-    height: 8vw;
-  }
-}
-
-@media only screen and (max-width: 710px) {
-  .card-title span {
-    font-size: 20px;
-  }
-
-  .card-content span {
-    font-size: 12px;
-  }
-  .card-footer-content span {
-    font-size: 13px;
-  }
-  .svg {
-    width: 22px;
-    height: 22px;
-    margin: 4px;
-  }
-  .content-works {
-    flex-wrap: wrap;
-  }
-  .card {
-    width: 34%;
-    margin: 5px;
-    height: 50%;
-  }
-
-  .svg-footer-section {
-    width: 10vw;
-    height: 10vw;
-  }
-}
-@media only screen and (max-width: 580px) {
-  .card {
-    width: 45%;
-    margin: 5px;
-    height: 50%;
-  }
-  .footer-scetion span {
-    font-size: 6vw;
-  }
 }
 </style>

@@ -1,20 +1,34 @@
 <template>
-  <header>
-    <div id="scene">
-      <div id="post-name" data-depth="0.2">Full Stack Web Developer</div>
-      <div id="author" data-depth="0.5">
-        <h1 class="author-name">Merouane Boucenna</h1>
+  <header class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <div id="scene">
+        <div id="author" data-depth="0.5">
+          <h1 class="author-name display-1">Merouane Boucenna</h1>
+        </div>
+        <h1 id="post-name" class="display-5" data-depth="0.2">
+          Full Stack Web Developer
+        </h1>
       </div>
-    </div>
-    <div class="social-media">
-      <icon
-        class="svg"
-        name="stackoverflow"
-        fill="#fff"
-        :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
-      />
-      <icon class="svg" name="github" fill="#fff" :to="'https://github.com/Merbou'" />
-      <icon class="svg" name="facebook" fill="#fff" :to="'https://www.facebook.com/Merouane.MB0'" />
+      <div class="social-media">
+        <icon
+          class="svg"
+          name="stackoverflow"
+          fill="#fff"
+          :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
+        />
+        <icon
+          class="svg"
+          name="github"
+          fill="#fff"
+          :to="'https://github.com/Merbou'"
+        />
+        <icon
+          class="svg"
+          name="linkedin"
+          fill="#fff"
+          :to="'https://www.linkedin.com/in/merouane-boucenna'"
+        />
+      </div>
     </div>
   </header>
 </template>
@@ -59,26 +73,25 @@ header {
 }
 #post-name {
   z-index: 4;
-  padding: 100px;
-  padding-top: 200px;
+  padding: 200px 100px 100px;
   position: absolute !important;
-  top: 0px !important;
-  font-size: 5vw;
+  top: 100px !important;
+  font-size: 7vw;
   left: auto !important;
   color: #ffffff;
   width: 100%;
 }
 #author {
-  padding: 100px;
   color: #ffffff;
-  padding-top: 250px;
+  padding: 150px 100px 100px;
   z-index: 100;
   display: flex;
   flex-direction: column;
   position: absolute !important;
-  top: 0px !important;
-  font-size: 5vw;
+  top: 100px !important;
+  font-size: 7vw;
   left: auto !important;
+  width: 100%;
 }
 .author-name {
   margin-bottom: 5px;
@@ -94,29 +107,12 @@ header {
   width: 6vw;
   margin: 10px;
 }
-
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 720px) {
   #author {
-    padding: 40px;
-    padding-top: 240px;
-  }
-  .social-media svg {
-    width: 7vw;
-  }
-}
-
-@media only screen and (max-width: 420px) {
-  #author {
-    padding: 30px;
-    padding-top: 240px;
+    padding: 240px 0px 100px;
   }
   #post-name {
-    padding: 30px;
-    padding-top: 200px;
-    font-size: 6vw;
-  }
-  .social-media svg {
-    width: 10vw;
+    padding: 200px 0px 100px;
   }
 }
 </style>

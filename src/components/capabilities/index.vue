@@ -1,40 +1,59 @@
 <template>
-  <section>
-    <div class="title-capabilites">
-      <h1>Capabilites</h1>
-    </div>
-    <div class="content-capabilites" :class="{'content-capabilites-scrolled':capabilities}">
-      <div :class="`column_points_${i+1}`" :key="i" v-for="(column,i) in full_columns()">
-        <ul>
-          <li :key="item.title" v-for="item in column" :class="{'li-scrolled':capabilities}">
-            <span :class="{'span-scrolled':capabilities}">{{item.title}}: {{item.name}}</span>
+  <section class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="title-capabilites">
+          <h1>Capabilites</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="content-capabilites"
+          :class="{ 'content-capabilites-scrolled': capabilities }"
+        >
+          <div
+            :class="`column_points_${i + 1}`"
+            :key="i"
+            v-for="(column, i) in full_columns()"
+          >
+            <ul>
+              <li
+                :key="item.title"
+                v-for="item in column"
+                :class="{ 'li-scrolled': capabilities }"
+              >
+                <span :class="{ 'span-scrolled': capabilities }"
+                  >{{ item.title }}: {{ item.name }}</span
+                >
 
-            <template v-if="item.value||item.score">
-              <pixel-bar
-                v-if="item.score"
-                :play="capabilities"
-                :value="item.score"
-                :classBar="capabilities?'span-scrolled':''"
-              >
-                <template v-slot:default="{count}">
-                  <small>{{count}}/2000</small>
+                <template v-if="item.value || item.score">
+                  <pixel-bar
+                    v-if="item.score"
+                    :play="capabilities"
+                    :value="item.score"
+                    :classBar="capabilities ? 'span-scrolled' : ''"
+                  >
+                    <template v-slot:default="{ count }">
+                      <small>{{ count }}/2000</small>
+                    </template>
+                  </pixel-bar>
+                  <pixel-bar
+                    v-if="item.value"
+                    :play="capabilities"
+                    :value="item.value()"
+                    :maxValue="item.value()"
+                    :duration="item.duration"
+                    :classBar="capabilities ? 'span-scrolled' : ''"
+                  >
+                    <template v-slot:default="{ count }">
+                      <small>{{ count }}</small>
+                    </template>
+                  </pixel-bar>
                 </template>
-              </pixel-bar>
-              <pixel-bar
-                v-if="item.value"
-                :play="capabilities"
-                :value="item.value()"
-                :maxValue="item.value()"
-                :duration="item.duration"
-                :classBar="capabilities?'span-scrolled':''"
-              >
-                <template v-slot:default="{count}">
-                  <small>{{count}}</small>
-                </template>
-              </pixel-bar>
-            </template>
-          </li>
-        </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -79,7 +98,6 @@ export default {
           { title: "Vue-router", score: 1900 },
           { title: "Vuetify", score: 1900 },
           { title: "webpack", score: 1500 },
-          { title: "babel", score: 1100 },
         ],
         [
           { title: "SOLID principles", score: 1900 },
@@ -221,48 +239,25 @@ section {
 .span-scrolled {
   box-shadow: 2px 16px 4px rgba(0, 0, 0, 0.3);
 }
-.content-capabilites::before {
-  content: "";
-  height: 96%;
-  width: 100%;
-  display: block;
-  box-sizing: border-box;
-  z-index: 1;
-  position: absolute;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  border-image: linear-gradient(
-    to right,
-    rgb(227, 154, 101) 0%,
-    rgb(233, 96, 142) 30%
-  );
-  border-image-slice: 1;
-}
-
 .column_points_1 {
   height: 96%;
   width: 80%;
   z-index: 2;
-  border-right: 2px solid rgb(231, 118, 128);
   display: flex;
   flex-direction: column;
 }
-
 .column_points_2 {
   height: 96%;
   width: 90%;
   z-index: 2;
-  border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
 }
-
 .column_points_3,
 .column_points_4 {
   width: 100%;
   z-index: 2;
   height: 96%;
-  border-right: 2px solid rgb(233, 96, 142);
   display: flex;
   flex-direction: column;
 }
@@ -295,11 +290,6 @@ small {
     width: 100%;
     height: 15%;
     border-bottom: 2px solid transparent;
-    border-image: linear-gradient(
-      to right,
-      rgb(227, 154, 101) 0%,
-      rgb(233, 96, 142) 50%
-    );
     border-image-slice: 1;
   }
   .column_points_1 ul {
@@ -317,12 +307,6 @@ small {
     display: flex;
     justify-content: space-around;
     border-bottom: 2px solid transparent;
-    border-image: linear-gradient(
-      to right,
-      rgb(227, 154, 101) 0%,
-      rgb(233, 96, 142) 50%
-    );
-
     border-image-slice: 1;
   }
   .column_points_2 ul,

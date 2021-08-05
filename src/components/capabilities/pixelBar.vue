@@ -5,22 +5,22 @@
     </span>
     <div id="main" :style="{'width':`${animatedCount/maxValue*100}%`}"></div>
     <div class="container-pixel" :class="{'disabled':count/maxValue*100===100}">
-      <div class="row" id="r-four">
+      <div class="bar-row" id="r-four">
         <span class="sq" id="sq-10"></span>
         <span class="sq" id="sq-11"></span>
         <span class="sq" id="sq-12"></span>
       </div>
-      <div class="row" id="r-three">
+      <div class="bar-row" id="r-three">
         <span class="sq" id="sq-7"></span>
         <span class="sq" id="sq-8"></span>
         <span class="sq" id="sq-9"></span>
       </div>
-      <div class="row" id="r-two">
+      <div class="bar-row" id="r-two">
         <span class="sq" id="sq-4"></span>
         <span class="sq" id="sq-5"></span>
         <span class="sq" id="sq-6"></span>
       </div>
-      <div class="row" id="r-one">
+      <div class="bar-row" id="r-one">
         <span class="sq" id="sq-1"></span>
         <span class="sq" id="sq-2"></span>
         <span class="sq" id="sq-3"></span>
@@ -98,6 +98,7 @@ export default {
   right: 0px;
   display: flex;
   justify-content: center;
+  align-items:center ;
 }
 #main {
   width: 200px;
@@ -113,7 +114,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.row {
+.bar-row {
   width: 5px;
   height: 33%;
   background: #92c81a;

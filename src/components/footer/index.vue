@@ -1,38 +1,56 @@
 <template>
-  <section>
-    <div class="content-footer">
-      <ul>
-        <li>MOBILE: 0555069674</li>
-        <li>Fix: 21344064123</li>
-      </ul>
-      <ul class="followers">
-        <li>
-          <icon
-            class="svg"
-            fill="#06054b"
-            name="stackoverflow"
-            :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
-          />
-        </li>
-        <li>
-          <icon class="svg" fill="#06054b" name="github" :to="'https://github.com/Merbou'" />
-        </li>
-        <li>
-          <icon
-            class="svg"
-            fill="#06054b"
-            name="facebook"
-            :to="'https://www.facebook.com/Merouane.MB0'"
-          />
-        </li>
-      </ul>
-      <ul>
-        <li>merouaneBoucenna@outlook.com</li>
-        <li>imarwanee@gmail.com</li>
-      </ul>
+  <section class="container-fluid">
+    <div class="row footer-row">
+      <div class="content-footer">
+        <div class="col footer-col">
+          <ul>
+            <li>MOBILE: +213782057355</li>
+            <li>Fix: 21344064123</li>
+          </ul>
+        </div>
+        <div class="col footer-col">
+          <ul class="followers">
+            <li>
+              <icon
+                class="svg"
+                fill="#06054b"
+                name="stackoverflow"
+                :to="'https://stackoverflow.com/users/9523354/merouane-boucenna'"
+              />
+            </li>
+            <li>
+              <icon
+                class="svg"
+                fill="#06054b"
+                name="github"
+                :to="'https://github.com/Merbou'"
+              />
+            </li>
+            <li>
+              <icon
+                class="svg"
+                fill="#06054b"
+                name="linkedin"
+                :to="'https://www.linkedin.com/in/merouane-boucenna'"
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="col footer-col">
+          <ul>
+            <li>merouaneBoucenna@outlook.com</li>
+            <li>merouaneboucennamb@gmail.com</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="footer-footer">
-      <span>{{ new Date().getFullYear() }} — Copyright © {{name}}. All rights reserved</span>
+    <div class="row">
+      <div class="footer-footer">
+        <span
+          >{{ new Date().getFullYear() }} — Copyright © {{ name }}. All rights
+          reserved</span
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -57,6 +75,14 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.footer-row {
+  width: 100%;
+}
+.footer-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .content-footer {
   z-index: 55;

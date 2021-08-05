@@ -1,37 +1,67 @@
 <template>
-  <section>
-    <div class="title-about">
-      <h1>About</h1>
-    </div>
-    <div class="content-about">
-      <aside class="biography">
-        <p>
-          BOUCENNA MEROUANE was born on march 3,1996 in Algiers, Algeria. Raised in Bab El Oued. He received
-          baccalaureate (scientist) from Omar ibn el Khattab high school in 2016, License degree (information systems
-          and software engineer) from University of Algiers 2019, He is studying at Houari Boumediene University of
-          Science and Technology to receive master degree (Bioinformatics).
-        </p>
-        <p>
-          Merouane first became interested in software development in the first year of university where he discovered
-          the software development, he loved that so much that he decided to be a software engineer, since then he
-          stay awake for learning and get more experience form anything and anywhere that related with software
-          development (friends, books, events, blogs, documentaries, series)
-        </p>
-        <p>
-          Merouane is now a web developer with extensive experience, large knowledge of languages of web
-          development and management skills, like working in collaboration team.
-        </p>
-      </aside>
-
-      <div class="cub-computer" :class="{'cub-computer-scrolled':about}">
-        <div class="computer_2" :class="{'computer_2-scrolled':about}">
-          <img src="/img/computer_2.png" alt="computer_2" />
-          <span class="computer-shadow" :class="{'computer-shadow-scrolled':about}"></span>
+  <section class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="title-about">
+          <h1>About</h1>
         </div>
+      </div>
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 biography-content">
+              <aside class="biography">
+                <p>
+                  BOUCENNA MEROUANE was born on march 3,1996 in Algiers,
+                  Algeria. Raised in Bab El Oued. He received baccalaureate
+                  (scientist) from Omar ibn el Khattab high school in 2016,
+                  License degree (information systems and software engineer)
+                  from University of Algiers 2019, He is studying at Houari
+                  Boumediene University of Science and Technology to receive
+                  master degree (Bioinformatics).
+                </p>
+                <p>
+                  Merouane first became interested in software development in
+                  the first year of university where he discovered the software
+                  development, he loved that so much that he decided to be a
+                  software engineer, since then he stay awake for learning and
+                  get more experience form anything and anywhere that related
+                  with software development (friends, books, events, blogs,
+                  documentaries, series)
+                </p>
+                <p>
+                  Merouane is now a web developer with extensive experience,
+                  large knowledge of languages of web development and management
+                  skills, like working in collaboration team.
+                </p>
+              </aside>
+            </div>
+            <div class="col-md-6 cub-computer-content">
+              <div
+                class="cub-computer"
+                :class="{ 'cub-computer-scrolled': about }"
+              >
+                <div
+                  class="computer_2"
+                  :class="{ 'computer_2-scrolled': about }"
+                >
+                  <img src="/img/computer_2.png" alt="computer_2" />
+                  <span
+                    class="computer-shadow"
+                    :class="{ 'computer-shadow-scrolled': about }"
+                  ></span>
+                </div>
 
-        <div class="cub" :class="{'cub-scrolled':about}">
-          <img src="/img/cub.png" alt="cub" />
-          <span class="cub-shadow" :class="{'cub-shadow-scrolled':about}"></span>
+                <div class="cub" :class="{ 'cub-scrolled': about }">
+                  <img src="/img/cub.png" alt="cub" />
+                  <span
+                    class="cub-shadow"
+                    :class="{ 'cub-shadow-scrolled': about }"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -42,9 +72,9 @@
 export default {
   props: {
     about: {
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+  },
 };
 </script>
 
@@ -76,20 +106,24 @@ section {
   display: flex;
   justify-content: space-around;
 }
-.biography {
-  width: 50%;
-  z-index: 5;
+.biography-content {
+  z-index: 10;
 }
 .biography p {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: justify;
-  font-size: 2vw;
+  font-size: 1.75vw;
 }
 
+.cub-computer-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
 .cub-computer {
-  width: 40%;
+  width: 80%;
   z-index: 5;
   transition: 1s;
   position: relative;
@@ -100,7 +134,7 @@ section {
   display: block;
   box-sizing: border-box;
   position: absolute;
-  height: 90%;
+  height: 70%;
   width: 90%;
   z-index: -1;
   border: 5px solid transparent;
@@ -185,9 +219,6 @@ section {
 }
 
 @media only screen and (max-width: 750px) {
-  .title-about {
-    height: 10px;
-  }
   .content-about {
     padding-top: 0px;
     flex-direction: column;

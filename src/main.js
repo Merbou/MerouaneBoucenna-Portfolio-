@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import particles from './plugins/particles'
+import bootstrap from './plugins/bootstrap'
 import zoom from './plugins/zoom'
-particles;
-
+bootstrap;
 Vue.config.productionTip = false
 
 
