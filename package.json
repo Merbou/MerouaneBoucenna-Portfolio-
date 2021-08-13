@@ -18,7 +18,6 @@
     "particles.js": "^2.0.0",
     "vanilla-tilt": "^1.7.1",
     "vue": "^2.6.14",
-    "vue-image-zoom": "^1.0.6",
     "vue-js-modal": "^2.0.1"
   },
   "devDependencies": {
