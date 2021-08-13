@@ -38,8 +38,8 @@
         </div>
         <div class="col footer-col">
           <ul>
-            <li>merouaneBoucenna@outlook.com</li>
             <li>merouaneboucennamb@gmail.com</li>
+            <li>merouaneBoucenna@outlook.com</li>
           </ul>
         </div>
       </div>

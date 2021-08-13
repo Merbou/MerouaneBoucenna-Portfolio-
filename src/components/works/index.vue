@@ -24,17 +24,32 @@
               <span>{{ projet.title }}</span>
             </div>
             <div class="card-content">
-              <div class="card-img" @click="redirectTo(projet)">
-                <img :src="projet.img" alt srcset />
+              <div
+                class="card-img"
+                v-b-modal.modal
+                @click="injectProject(projet)"
+              >
+                <img
+                  :src="projet.imgs && projet.imgs.length && projet.imgs[0]"
+                  alt
+                  srcset
+                />
               </div>
-              <span>{{ projet.description }}</span>
+              <span>{{ projet.summary }}</span>
             </div>
-            <div class="card-footer">
-              <div class="card-footer-content">
+            <div class="card-footer-para">
+              <div class="card-icon-footer">
+                <div v-for="(tech, index) in projet.techs" :key="index">
+                  <a :href="tech.url" target="_blank">
+                    <img :src="tech.icon" class="img-tech" />
+                  </a>
+                </div>
+              </div>
+              <div class="card-svg-footer">
                 <span>{{ projet.timeWork }}hrs</span>
-                <icon class="svg" name="clock" fill="#fff" />
+                <icon class="svg-card-para" name="clock" fill="#fff" />
                 <span>{{ projet.litreCoffee }}L</span>
-                <icon class="svg" name="coffee" fill="#fff" />
+                <icon class="svg-card-para" name="coffee" fill="#fff" />
               </div>
             </div>
           </div>
@@ -49,18 +64,40 @@
         </div>
       </div>
     </div>
+    <b-modal
+      id="modal"
+      :title="projectModel.title"
+      size="xl"
+      centered
+      hide-header-close
+    >
+      <Splide>
+        <Splide-slide v-for="(img, index) in projectModel.imgs" :key="index">
+          <div>
+            <img :src="img" class="img-slider" />
+          </div>
+        </Splide-slide>
+      </Splide>
+      <template #modal-footer="{}">
+        <p>{{ projectModel.description }}</p>
+      </template>
+    </b-modal>
   </section>
 </template>
 
 <script>
 import icon from "../icons";
 import vanillaTilt from "vanilla-tilt";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+
 import gsap from "gsap";
 
 export default {
   name: "works",
   components: {
     icon,
+    Splide,
+    SplideSlide,
   },
   props: {
     works: {
@@ -73,31 +110,93 @@ export default {
   },
   data() {
     return {
+      slide: 0,
       countLitre: 0,
       countTime: 0,
+      projectModel: [],
       projets: [
         {
-          title: "Vus",
-          description: "beautiful dashboard combination of Laravel, Vue.js",
-          img: "/img/vus.png",
+          title: "CareMed - 2018",
+          summary: "Application for managing medical appointments",
+          description:
+            "my first challenger is to develop a medical appointment management application using only PHP for 15 days, my first thought is to organize the code, minimize errors, and given the ease of integrating the modules, To deliver the application on time, my solution is to develop first a micro-framework based on the MVC architecture",
+          code_source: "https://github.com/Merbou/caremed",
+          imgs: [
+            "/img/projects/caremed/0.png",
+            "/img/projects/caremed/1.png",
+            "/img/projects/caremed/2.png",
+          ],
+          techs: [{ url: "https://www.php.net", icon: "/icon/php.png" }],
+          timeWork: 102,
+          litreCoffee: 1.5,
+        },
+        {
+          title: "B2B - 2019",
+          summary: "A platform for organizing business to business",
+          description:
+            "Platform to organize end-to-end meetings between companies participating in economic events. Before CCI she had difficulty in organizing meetings between these partners when the event occurred, everything is manual so expect to make mistakes and delays. In addition, the employees worked like machines. After using my design experience with UML and helping with the specs, I was able to develop this solution.",
+          imgs: [
+            "/img/projects/b2b/0.png",
+            "/img/projects/b2b/1.png",
+            "/img/projects/b2b/2.png",
+            "/img/projects/b2b/3.png",
+            "/img/projects/b2b/4.png",
+            "/img/projects/b2b/5.png",
+            "/img/projects/b2b/6.png",
+          ],
+          techs: [
+            { url: "https://www.laravel.com", icon: "/icon/laravel.png" },
+            {
+              url: "https://www.getbootstrap.com",
+              icon: "/icon/bootstrap.png",
+            },
+          ],
+          timeWork: 270,
+          litreCoffee: 4.5,
+        },
+        {
+          title: "Vus - 2020 ",
+          summary: "Production-ready solution for admin interfaces",
+          description:
+            "A production-ready solution for admin interfaces, after reading all the code of PanJiaChen / vue-element-admin (used by 15 users and more than 100 Contributors) several times I developed two of my own versions consecutively, 1st version: I added further changes and energized the application by adding the back-end using laravel and mysql, adding translations (French, Arabic), adding roles and permissions on actions and pages and etc ..., 2nd version (VUS): Solution Different from the PanJiaChen / vue-element-admin version but the same concept, I started to develop from 0, at the base of this solution I managed to create two vuejs plugins to publish in npm",
+          imgs: ["/img/projects/vus/0.png", "/img/projects/vus/1.png"],
+          techs: [
+            { url: "https://www.laravel.com", icon: "/icon/laravel.png" },
+            { url: "https://www.vuejs.org", icon: "/icon/vue.png" },
+          ],
           code_source: "https://github.com/Merbou/vus",
           timeWork: 120,
           litreCoffee: 2.5,
         },
         {
-          title: "B2B",
-          description: "A platform for organizing business to business",
-          img: "/img/b_2_b.png",
-          timeWork: 240,
-          litreCoffee: 30,
+          title: "Elis - 2020",
+          summary:
+            "(Electronic Laboratory Information System) An information system for the management of analysis laboratories and partners",
+          description:
+            "An information system for the management of analysis laboratories and partners, to summarize it is a socio-technical system it takes care of everything related to the analysis laboratory, I was an important element in my team and I was responsible for the administrative part (management of automatons, analyzes, conventions ...) and I participated in up to 275 contributions",
+          imgs: ["/img/projects/elis/0.png"],
+          techs: [
+            { url: "https://www.laravel.com", icon: "/icon/laravel.png" },
+            { url: "https://www.vuejs.org", icon: "/icon/vue.png" },
+          ],
+          timeWork: 630,
+          litreCoffee: 9,
         },
         {
-          title: "CareMed",
-          description: "Application for managing medical appointments",
-          code_source: "https://github.com/Merbou/caremed",
-          img: "/img/care_med.png",
-          timeWork: 102,
-          litreCoffee: 4.5,
+          title: "Covid19 Detector - 2021",
+          summary: "smart system that uses deep learning to detect COVID19",
+          description:
+            "It's a smart system that uses deep learning to detect if a chest x-ray contains Ground-glass. If so, it classifies the lung as infected with covid 19",
+          code_source: "https://github.com/Merbou/VGG19_COVID19",
+          techs: [
+            { url: "https://www.python.org", icon: "/icon/python.png" },
+            { url: "https://www.tensorflow.org", icon: "/icon/tensorflow.png" },
+            { url: "https://www.vuejs.org", icon: "/icon/vue.png" },
+          ],
+          imgs: ["/img/projects/covid/0.png"],
+
+          timeWork: 120,
+          litreCoffee: 2.5,
         },
       ],
     };
@@ -124,9 +223,8 @@ export default {
         .map((e) => e[attrb])
         .reduce((acc, curr) => acc + curr, 0);
     },
-    redirectTo({ code_source, img }) {
-      img && this.$zoom(img);
-      code_source && window.open(code_source);
+    injectProject(project) {
+      this.projectModel = project;
     },
   },
   watch: {
@@ -144,7 +242,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 section {
   overflow: hidden;
   width: 100%;
@@ -215,13 +313,28 @@ section {
   max-height: 100%;
   transform: translateZ(30px);
 }
-.card-footer {
+.card-footer-para {
   position: absolute;
   height: 10%;
   width: 80%;
   bottom: 15px;
   display: flex;
+  color: #fff;
+  justify-content: space-around;
+}
+.card-icon-footer,
+.card-svg-footer {
+  margin-top: 5px;
+  height: 100%;
+  width: 100%;
+  display: flex;
   justify-content: center;
+}
+.card-svg-footer {
+  align-items: center;
+}
+.card-svg-footer {
+  align-content: center;
 }
 .card-title span {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
@@ -237,6 +350,34 @@ section {
   text-align: justify;
   font-size: 14px;
 }
+.modal-content {
+  background: linear-gradient(
+    to bottom,
+    rgb(58 24 192) 0%,
+    rgb(227 154 101) 100%
+  ) !important;
+  color: #fdfdfd !important;
+}
+.modal-header,
+.modal-footer {
+  border-top: 0px !important;
+  border-bottom: 0px !important;
+}
+footer#modal___BV_modal_footer_ {
+  justify-content: flex-start !important;
+}
+.splide__list {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.splide__slide {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+.img-slider {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
 .card-footer-content {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
@@ -247,13 +388,18 @@ section {
 .card-footer-content span {
   margin-top: 8px;
 }
-.svg {
+img.img-tech {
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.svg-card-para {
   z-index: 55;
   width: 30px;
   height: 30px;
   margin: 0px 5px 0px 5px;
 }
-
 .footer-scetion {
   background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
   -webkit-background-clip: text;
