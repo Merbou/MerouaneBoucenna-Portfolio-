@@ -94,7 +94,9 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: pix !important;
-  /* height: 100%; */
+}
+body {
+  display: block !important;
 }
 #particles-js {
   position: absolute;

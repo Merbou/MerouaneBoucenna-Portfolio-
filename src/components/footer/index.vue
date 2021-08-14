@@ -142,7 +142,7 @@ ul {
   }
 }
 
-@media only screen and (max-width: 610px) {
+@media only screen and (max-width: 650px) {
   .content-footer {
     justify-content: center;
   }
@@ -154,21 +154,18 @@ ul {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 505px) {
+  .content-footer {
+    display: block;
+  }
   .content-footer ul li {
-    font-size: 13px;
+    font-size: 20px;
   }
   .svg {
-    width: 28px;
+    width: 45px;
   }
-}
-
-@media only screen and (max-width: 400px) {
-  .content-footer ul li {
-    font-size: 13px;
-  }
-  .svg {
-    width: 25px;
+  .footer-footer {
+    font-size: 11px;
   }
 }
 </style>

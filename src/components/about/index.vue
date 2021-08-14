@@ -45,7 +45,7 @@
                   class="computer_2"
                   :class="{ 'computer_2-scrolled': about }"
                 >
-                  <img src="/img/computer_2.png" alt="computer_2" />
+                  <img src="img/computer_2.png" alt="computer_2" />
                   <span
                     class="computer-shadow"
                     :class="{ 'computer-shadow-scrolled': about }"
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="cub" :class="{ 'cub-scrolled': about }">
-                  <img src="/img/cub.png" alt="cub" />
+                  <img src="img/cub.png" alt="cub" />
                   <span
                     class="cub-shadow"
                     :class="{ 'cub-shadow-scrolled': about }"
@@ -227,7 +227,7 @@ section {
   }
   .biography {
     width: 100%;
-    padding: 0px 50px 0px 50px;
+    padding: 0px;
   }
 
   .biography p {

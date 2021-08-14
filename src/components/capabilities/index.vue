@@ -61,8 +61,8 @@
 
 <script>
 import pixelBar from "./pixelBar";
-let score_counter = new Audio("/sound/score_counter.mp3");
-let end_score_counter = new Audio("/sound/end_score_counter.mp3");
+let score_counter = new Audio("sound/score_counter.mp3");
+let end_score_counter = new Audio("sound/end_score_counter.mp3");
 export default {
   components: {
     pixelBar,
