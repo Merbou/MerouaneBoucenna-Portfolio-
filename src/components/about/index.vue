@@ -12,27 +12,27 @@
             <div class="col-md-6 biography-content">
               <aside class="biography">
                 <p>
-                  BOUCENNA MEROUANE was born on march 3,1996 in Algiers,
-                  Algeria. Raised in Bab El Oued. He received baccalaureate
-                  (scientist) from Omar ibn el Khattab high school in 2016,
-                  License degree (information systems and software engineer)
-                  from University of Algiers 2019, He is studying at Houari
-                  Boumediene University of Science and Technology to receive
-                  master degree (Bioinformatics).
+                  BOUCENNA MEROUANE was born on march 5,1996 in Algiers,
+                  Algeria. he graduated from the University of Algiers with a
+                  bachelor's degree in information systems and software engineer
+                  in 2019, He studied at the University of Science and
+                  Technology Houari Boumediene to receive a master's degree in
+                  Bioinformatics in 2021
                 </p>
                 <p>
-                  Merouane first became interested in software development in
-                  the first year of university where he discovered the software
-                  development, he loved that so much that he decided to be a
-                  software engineer, since then he stay awake for learning and
-                  get more experience form anything and anywhere that related
-                  with software development (friends, books, events, blogs,
-                  documentaries, series)
+                  Merouane first became interested in software development
+                  during his first year of college when he discovered it and
+                  loved it so much that he decided to become a software
+                  engineer.Since then, he stays up at night to learn and gain
+                  more experience from anything and anywhere related to software
+                  development (Friends, books, events, blogs, documentaries,
+                  series).
                 </p>
                 <p>
-                  Merouane is now a web developer with extensive experience,
-                  large knowledge of languages of web development and management
-                  skills, like working in collaboration team.
+                  Merouane is now a full-stack web developer with a computer
+                  science background and extensive experience, large knowledge
+                  of languages of web development, likes working in a
+                  collaboration team.
                 </p>
               </aside>
             </div>

@@ -8,5 +8,4 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  zoom
 }).$mount('#app')
