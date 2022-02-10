@@ -13,7 +13,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.16.0",
     "gsap": "^3.7.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "parallax-js": "^3.1.0",
     "particles.js": "^2.0.0",
     "vanilla-tilt": "^1.7.1",
